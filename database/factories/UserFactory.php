@@ -22,3 +22,16 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Menu::class, function (Faker $faker) {
+	$etiqueta = $faker->name;
+	$menus = App\Menu::all();
+
+	return [
+		'etiqueta' => $etiqueta,
+		'pagina' => str_slug($etiqueta),
+		'padre' => (count($menus) > 0) ? $faker->randomElement($menus->pluck('id')->toArray()) : 0,
+		'orden' => 0,
+	];
+ });
