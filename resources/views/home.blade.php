@@ -24,10 +24,9 @@
                 @if(Auth::user()->hasRole('admin'))
                     <div>Acceso como administrador</div>
                 @else
-                    @if( Auth::user()->hasRole('comprador') )
-                            <div>Acceso COMPRADOR {{Auth::user()->rol}}</div>
-                        @else
-                            <div>Acceso VENDEDOR {{Auth::user()->rol}}</div>
+                    @if( Auth::user()->hasRole('gimnasio') )
+                            <div>Acceso Gimnasio {{Auth::user()->rol}}</div>
+                        
                         @endif
                 @endif
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
         ]);
     }
 
@@ -72,7 +73,7 @@ class RegisterController extends Controller
 
         $user
             ->roles()
-            ->attach(Role::where('name', 'user')->first());
+            ->attach(Role::where('name', 'gimnasio')->first());
 
         return $user;
     }
