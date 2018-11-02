@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architect-project version="1.0" appversion="1.0.8">
+ <project-name>Modelo de Datos </project-name>
+ <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
+ <project-data-sources>
+  <data-source id="DS0">
+   <property key="Logical" value="PlayPen Database" />
+  </data-source>
+ </project-data-sources>
+ <source-databases>
+ </source-databases>
+ <target-database id="ppdb" dbcs-ref="DS0">
+  <table id="TAB1" populated="true" UUID="415b3ff9-fcd5-467a-835e-36aeaf4c8493" name="actividades" objectType="TABLE" physicalName="actividades" >
+   <remarks></remarks>
+   <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX2" populated="true" UUID="59f42a92-e8c3-442e-a569-1d59b4b03703" clustered="false" name="actividades_pk" physicalName="actividades_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB3" populated="true" UUID="4ed9c456-0786-4015-a76f-49d39a26dc74" name="instructores" objectType="TABLE" physicalName="instructores" >
+   <remarks></remarks>
+   <folder id="FOLTAB31" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX4" populated="true" UUID="463ae449-d003-4973-b971-7ec95ba185d5" clustered="false" name="instructores_pk" physicalName="instructores_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB5" populated="true" UUID="c603a222-67f4-49b2-9ab3-add3ad0b729e" name="clientes" objectType="TABLE" physicalName="clientes" >
+   <remarks></remarks>
+   <folder id="FOLTAB51" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX6" populated="true" UUID="1a3495a5-6bc7-4331-af72-4e175c6de2f9" clustered="false" name="clientes_pk" physicalName="clientes_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB7" populated="true" UUID="592b4589-cf1b-45b9-9f7c-30f4be7ddd92" name="Usuarios" objectType="TABLE" physicalName="Usuarios" >
+   <remarks></remarks>
+   <folder id="FOLTAB71" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX8" populated="true" UUID="98ffb250-f372-46c8-9f68-85e83a17818d" clustered="false" name="Usuarios_pk" physicalName="Usuarios_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB9" populated="true" UUID="8c256556-2d39-40c3-ac85-20163860ab5d" name="det_actividades" objectType="TABLE" physicalName="det_actividades" >
+   <remarks></remarks>
+   <folder id="FOLTAB91" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX10" populated="true" UUID="011419ec-0c91-4b80-b181-1c10a0c12b74" clustered="false" name="det_actividades_pk" physicalName="det_actividades_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB11" populated="true" UUID="5b13145f-e04a-4853-bb97-54bbea079ced" name="cuotas" objectType="TABLE" physicalName="cuotas" >
+   <remarks></remarks>
+   <folder id="FOLTAB111" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX12" populated="true" UUID="186a69f4-5636-4961-b6dc-8edd6320f07e" clustered="false" name="cuotas_pk" physicalName="cuotas_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB13" populated="true" UUID="a187d94a-2aac-4ffa-ba46-0801259acd8f" name="det_cuotas" objectType="TABLE" physicalName="det_cuotas" >
+   <remarks></remarks>
+   <folder id="FOLTAB131" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX14" populated="true" UUID="98788284-89cf-4696-b8cc-75439819f298" clustered="false" name="det_cuotas_pk" physicalName="det_cuotas_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB15" populated="true" UUID="1520eee6-753e-4de8-86bb-a74c67d2dd0f" name="personas" objectType="TABLE" physicalName="personas" >
+   <remarks></remarks>
+   <folder id="FOLTAB151" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX16" populated="true" UUID="35043a77-daed-43cd-9a33-002de2d9f15f" clustered="false" name="personas_pk" physicalName="personas_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <table id="TAB17" populated="true" UUID="1eec1372-f401-489c-869d-c7b6a7478308" name="role" objectType="TABLE" physicalName="role" >
+   <remarks></remarks>
+   <folder id="FOLTAB171" populated="true" name="Columns" physicalName="Columns" type="1">
+    <index id="IDX18" populated="true" UUID="b96f5f40-d4b5-42c9-8ec4-de8817996508" clustered="false" name="role_pk" physicalName="role_pk" primaryKeyIndex="true" unique="false" >
+    </index>
+   </folder>
+  </table>
+  <relationships>
+   <relationship id="REL19" populated="true" UUID="4c8be769-d2a3-4b7f-b989-2b6883208afa" deferrability="7" deleteRule="3" fk-table-ref="TAB9" fkCardinality="7" identifying="false" name="actividades_det_actividades_fk" physicalName="actividades_det_actividades_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL20" populated="true" UUID="38ab214d-9dd9-4d80-9f64-9257a58ecab9" deferrability="7" deleteRule="3" fk-table-ref="TAB9" fkCardinality="7" identifying="false" name="instructores_det_actividades_fk" physicalName="instructores_det_actividades_fk" pk-table-ref="TAB3" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL21" populated="true" UUID="532a9514-cda1-4318-9563-350126990490" deferrability="7" deleteRule="3" fk-table-ref="TAB13" fkCardinality="7" identifying="false" name="clientes_det_cuotas_fk" physicalName="clientes_det_cuotas_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL22" populated="true" UUID="92b02f99-2491-4ca5-8829-e090c4c5b7fa" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="7" identifying="false" name="Usuarios_actividades_fk" physicalName="Usuarios_actividades_fk" pk-table-ref="TAB7" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL23" populated="true" UUID="7a70a22e-862a-4d38-a273-1e8986062cee" deferrability="7" deleteRule="3" fk-table-ref="TAB5" fkCardinality="7" identifying="false" name="Usuarios_clientes_fk" physicalName="Usuarios_clientes_fk" pk-table-ref="TAB7" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL24" populated="true" UUID="e56a768f-a629-4516-bc60-5830f17c3e4e" deferrability="7" deleteRule="3" fk-table-ref="TAB3" fkCardinality="7" identifying="false" name="Usuarios_instructores_fk" physicalName="Usuarios_instructores_fk" pk-table-ref="TAB7" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL25" populated="true" UUID="87158ba6-e556-49a8-870d-e9f1e89b2fd8" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="Usuarios_cuotas_fk" physicalName="Usuarios_cuotas_fk" pk-table-ref="TAB7" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL26" populated="true" UUID="e6e893c9-ac65-40b1-ab5f-7cd3586b73bb" deferrability="7" deleteRule="3" fk-table-ref="TAB13" fkCardinality="7" identifying="false" name="cuotas_det_cuotas_fk" physicalName="cuotas_det_cuotas_fk" pk-table-ref="TAB11" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL27" populated="true" UUID="da21a2c0-d9fa-4555-884f-f1330fc903ff" deferrability="7" deleteRule="3" fk-table-ref="TAB5" fkCardinality="3" identifying="false" name="personas_clientes_fk" physicalName="personas_clientes_fk" pk-table-ref="TAB15" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL28" populated="true" UUID="09fcb09b-64d2-4f6e-98c0-b8e627a36c21" deferrability="7" deleteRule="3" fk-table-ref="TAB3" fkCardinality="3" identifying="false" name="personas_instructores_fk" physicalName="personas_instructores_fk" pk-table-ref="TAB15" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL29" populated="true" UUID="db730732-1ea1-4612-91ba-e1a49f142b01" deferrability="7" deleteRule="3" fk-table-ref="TAB7" fkCardinality="7" identifying="false" name="role_Usuarios_fk" physicalName="role_Usuarios_fk" pk-table-ref="TAB17" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL30" populated="true" UUID="59812c21-185b-43e4-90fb-0d9ea72cf74d" deferrability="7" deleteRule="3" fk-table-ref="TAB5" fkCardinality="7" identifying="false" name="role_clientes_fk" physicalName="role_clientes_fk" pk-table-ref="TAB17" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL31" populated="true" UUID="67114280-5136-48ac-94ff-9082f86da0f2" deferrability="7" deleteRule="3" fk-table-ref="TAB3" fkCardinality="7" identifying="false" name="role_instructores_fk" physicalName="role_instructores_fk" pk-table-ref="TAB17" pkCardinality="2" updateRule="3" >
+   </relationship>
+  </relationships>
+ </target-database>
+ <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
+ <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
+ <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
+ <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+  <table-pane table-ref="TAB1" x="117" y="254" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB3" x="278" y="271" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB5" x="524" y="146" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB7" x="205" y="27" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB9" x="164" y="387" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB11" x="577" y="47" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB13" x="753" y="145" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB15" x="500" y="299" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB17" x="60" y="91" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL22" pkConnection="0.018518518518518517" fkConnection="0.9850746268656716" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL19" pkConnection="0.8507462686567164" fkConnection="0.1111111111111111" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL20" pkConnection="0.4647887323943662" fkConnection="0.5111111111111111" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL23" pkConnection="0.625" fkConnection="0.375" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL24" pkConnection="0.8148148148148148" fkConnection="0.16901408450704225" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL21" pkConnection="0.21875" fkConnection="0.75" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL26" pkConnection="0.6875" fkConnection="0.640625" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="129"/>
+  <table-link relationship-ref="REL25" pkConnection="0.4375" fkConnection="0.5" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL27" pkConnection="0.625" fkConnection="0.425531914893617" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL28" pkConnection="0.0625" fkConnection="0.9375" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL29" pkConnection="0.3125" fkConnection="0.6875" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL30" pkConnection="0.53125" fkConnection="0.5531914893617021" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="129"/>
+  <table-link relationship-ref="REL31" pkConnection="0.6875" fkConnection="0.8028169014084507" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="129"/>
+ </play-pen>
+ <critic-manager>
+  <critic-grouping platformType="Generic" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="DB2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="H2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="HSQLDB" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="MySQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="Oracle" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="PostgreSQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2000" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2005" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+ </critic-manager>
+ <profiles topNCount="10">
+  </profiles>
+  <olap>
+  </olap>
+  <olap-gui>
+  </olap-gui>
+</architect-project>

@@ -104,7 +104,7 @@ class RolmenuTableSeeder extends Seeder
         $Menurol->save();
 
 
-        //Permisos de Comprador 
+        //Permisos de Gimnasio
 
         $Menurol = new Rolmenu();
         $Menurol->role_id = 2;
@@ -154,69 +154,6 @@ class RolmenuTableSeeder extends Seeder
 
         $Menurol = new Rolmenu();
         $Menurol->role_id = 2;
-        $Menurol->menu_id = 13;
-        $Menurol->save();
-
-        //Permisos VENDEDOR
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 1;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 2;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 3;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 4;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 6;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 7;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 8;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 9;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 10;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 11;
-        $Menurol->save();
-
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
-        $Menurol->menu_id = 12;
-        $Menurol->save();
-
-        $Menurol = new Rolmenu();
-        $Menurol->role_id = 3;
         $Menurol->menu_id = 13;
         $Menurol->save();
 
