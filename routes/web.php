@@ -20,4 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('gimnasios', 'GimnasioController')->middleware('auth', 'role:admin');
+
+Route::resource('instructores', 'InstructorController');
+
 Route::get('/{slug}', 'HomeController@index');

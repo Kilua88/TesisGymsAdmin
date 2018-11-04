@@ -32,12 +32,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                   @auth
                     <ul class="navbar-nav mr-auto">
                          @if( Auth::check()  )
                             @include('shared.navbar')
                         @endif
                     </ul>
-
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -75,7 +76,10 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            
+                @yield('content')
+            
+            
         </main>
     </div>
 </body>
