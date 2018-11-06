@@ -19,4 +19,8 @@ class Persona extends Model
     public function cliente(){
         return $this->belongTo('App\Cliente','pers_id');
     }
+    
+    public function instructor(){
+        return $this->belongTo('App\Instructor','pers_id');
+    }
 }

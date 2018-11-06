@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Menu;
-use App\Persona;
 use App\Instructor;
+use App\Persona;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class InstructorController extends Controller
 {
@@ -18,9 +18,10 @@ class InstructorController extends Controller
     public function index()
     {
        
-        $gimnasios = User::all();
-      return view('gimnasios.index',compact('gimnasios'))->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+        $instructores = Instructor::all();
+        $persona = Persona::with('persona');
+        return view('instructores.index',compact('persona'))->with('instructores',$instructores);
+      }
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +31,7 @@ class InstructorController extends Controller
     public function create()
     {
         //
-        return view('gimnasios.create');
+        return view('instructores.create');
     }
 
     /**
@@ -42,13 +43,19 @@ class InstructorController extends Controller
     public function store(Request $request)
     {
         //
-        request()->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            ]);
-            User::create($request->all());
-            return redirect()->route('gimnasios.index')->with('success','Gimnasio created successfully');
-    }
+        $persona = new Persona;
+            $persona->pers_nombre = $request->input('pers_nombre'); 
+            $persona->pers_apellido = $request->input('pers_apellido');
+            $persona->pers_direccion = $request->input('pers_direccion');
+            $persona->pers_telefono = $request->input('pers_telefono');
+            $persona->save();
+        $instructor = new Instructor;
+                $instructor->pers_id = $persona->id;     
+                $instructor->users_id = Auth::user()->id;
+                $instructor->inst_actividad = $request->input('inst_actividad');
+                $instructor->save();
+        return redirect()->route('instructores.index')->with('success','Instructo created successfully');
+}
 
     /**
      * Display the specified resource.
@@ -59,8 +66,8 @@ class InstructorController extends Controller
     public function show($id)
     {
         //
-        $gimnasio = User::find($id);
-        return view('gimnasios.show',compact('gimnasio'));
+        $instructor = Instructor::find($id);
+        return view('instructores.show',compact('instructor'));
     }
 
     /**
@@ -72,8 +79,8 @@ class InstructorController extends Controller
     public function edit($id)
     {
         //
-        $gimnasio = User::find($id);
-        return view('gimnasios.edit',compact('gimnasio'));
+        $instructor = Instructor::find($id);
+        return view('instructores.edit',compact('instructor'));
     }
 
     /**
@@ -85,14 +92,21 @@ class InstructorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        request()->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            ]);
-            User::find($id)->update($request->all());
-            return redirect()->route('gimnasios.index')->with('success','Gimnasio updated successfully');
-    }
+            $instructor = Instructor::find($id);
+            $persona = Persona::find($instructor->pers_id);
+            $persona->pers_nombre = $request->input('persona->pers_nombre'); 
+            $persona->pers_apellido = $request->input('pers_apellido');
+            $persona->pers_direccion = $request->input('pers_direccion');
+            $persona->pers_telefono = $request->input('pers_telefono');
+            
+                $instructor->pers_id = $persona->id;     
+        
+                $instructor->cli_edad = $request->input('cli_edad');
+                $Instructor->save();
+                $persona->save();
+
+        return redirect()->route('instructor.index')->with('success','Instructor created successfully');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -103,7 +117,7 @@ class InstructorController extends Controller
     public function destroy($id)
     {
         //
-        User::find($id)->delete();
-        return redirect()->route('gimnasios.index')->with('success','Gimnasio deleted successfully');
+        Instructor::find($id)->delete();
+        return redirect()->route('instructor.index')->with('success','Instructor deleted successfully');
     }
 }

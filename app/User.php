@@ -35,6 +35,10 @@ class User extends Authenticatable
         return $this->hsAnyMany('App\Cliente','users_id');
     }
 
+    public function instructores(){
+        return $this->hsAnyMany('App\Instructor','users_id');
+    }
+
     public function authorizeRoles($roles)
     {
         if ($this->hasAnyRole($roles)) {
