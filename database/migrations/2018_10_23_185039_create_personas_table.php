@@ -14,14 +14,12 @@ class CreatePersonasTable extends Migration
     public function up()
     {
         Schema::create('personas', function (Blueprint $table) {
-            $table->increments('pers_id');
+            $table->increments('id');
             $table->string('pers_dni')->nullable();
             $table->string('pers_nombre');
             $table->string('pers_apellido');
             $table->string('pers_direccion');
             $table->string('pers_telefono');
-            $table->integer('pers_contact_id')->unsigned()->nullable();
-            $table->foreign('pers_contact_id')->references('pers_id')->on('personas');
             $table->timestamps();
         });
     }

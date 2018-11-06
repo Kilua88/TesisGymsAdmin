@@ -18,7 +18,7 @@ class CreateDetalleCoutasTable extends Migration
             $table->integer('act_id')->unsigned();
             $table->foreign('act_id')->references('act_id')->on('actividades');
             $table->integer('cli_id')->unsigned();
-            $table->foreign('cli_id')->references('cli_id')->on('clientes');
+            $table->foreign('cli_id')->references('id')->on('clientes');
             $table->integer('cuota_id')->unsigned();
             $table->foreign('cuota_id')->references('cuota_id')->on('cuota');
             $table->integer('valor');
