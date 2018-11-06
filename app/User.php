@@ -31,6 +31,9 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('App\Role')->withTimestamps();
     }
+    public function clientes(){
+        return $this->hsAnyMany('App\Cliente','users_id');
+    }
 
     public function authorizeRoles($roles)
     {
