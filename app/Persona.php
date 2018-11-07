@@ -20,7 +20,7 @@ class Persona extends Model
         return $this->belongTo('App\Cliente','pers_id');
     }
     
-    public function instructor(){
-        return $this->belongTo('App\Instructor','pers_id');
+    public function instructores(){
+        return $this->belongTo('App\Instructore','pers_id');
     }
 }

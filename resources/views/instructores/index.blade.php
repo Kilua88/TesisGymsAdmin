@@ -1,14 +1,14 @@
 
 
-@extends('layouts.app')
+@extends('home')
 @section('content')
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2>CRUD Pacientes</h2>
+<h2>CRUD Clientes</h2>
 </div>
 <div class="pull-right">
-<a class="btn  btn-success" href ="{{ route('gimnasios.create') }}"> Nuevo </a>
+<a class="btn  btn-success" href ="{{ route('instructores.create') }}"> Nuevo </a>
 </div>
 </div>
 </div>
@@ -22,21 +22,27 @@
 <tr>
 <th>Nro</th>
 <th>Nombre</th>
-<th>Email</th>
+<th>Apellido</th>
+<th>Direccion</th>
+<th>Telefono</th>
+<th>Edad</th>
 
 <th width="280px">Acciones</th>
 </tr>
-@foreach ($gimnasios as $gimnasio)
+@foreach ($instructores as $instructor)
 <tr>
-<td>{{ $gimnasio->id }}</td>
-<td>{{ $gimnasio->name}}</td>
-<td>{{ $gimnasio->email}}</td>
+<td>{{ $instructor->inst_id }}</td>
+<td>{{ $instructor->persona->pers_nombre}}</td>
+<td>{{ $instructor->persona->pers_apellido}}</td>
+<td>{{ $instructor->persona->pers_direccion}}</td>
+<td>{{ $instructor->persona->pers_telefono}}</td>
+<td>{{ $instructor->cli_edad}}</td>
 
 
 <td>
-<a class="btn btn-info btn-sm" href="{{ route('gimnasios.show',$gimnasio->id)}}">Show</a>
-<a class="btn btn-primary btn-sm" href="{{ route('gimnasios.edit',$gimnasio->id) }}">Edit</a>
-{!! Form::open(['method' => 'DELETE','route' => ['gimnasios.destroy',$gimnasio->id],'style'=>'display:inline']) !!}
+<a class="btn btn-info btn-sm" href="{{ route('instructores.show',$instructor->inst_id)}}">Show</a>
+<a class="btn btn-primary btn-sm" href="{{ route('instructores.edit',$instructor->inst_id) }}">Edit</a>
+{!! Form::open(['method' => 'DELETE','route' => ['instructores.destroy',$instructor->inst_id],'style'=>'display:inline']) !!}
 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
 {!! Form::close() !!}
 

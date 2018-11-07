@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('home')
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -6,7 +6,7 @@
             <h2>Add Nuevo Cliente</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('gimnasios.index') }}">Back</a>
+            <a class="btn btn-primary" href="{{ route('instructores.index') }}">Back</a>
         </div>
     </div>
 </div>
@@ -20,8 +20,8 @@
             </ul>
     </div>
 @endif
-{!! Form::open( ['method' => 'POST', 'route' => ['gimnasios.store']]) !!}
-            @include('gimnasios.form')
+{!! Form::open( ['method' => 'POST', 'route' => ['instructores.store']]) !!}
+            @include('instructores.form')
 {!! Form::close() !!}
             @endsection
 

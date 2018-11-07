@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Instructor extends Model
+class Instructore extends Model
 {
     protected $fillable = [
         'inst_descripcion', 'inst_actividad'

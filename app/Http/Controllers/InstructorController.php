@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Instructor;
+use App\Instructore;
 use App\Persona;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +18,7 @@ class InstructorController extends Controller
     public function index()
     {
        
-        $instructores = Instructor::all();
+        $instructores = Instructore::all();
         $persona = Persona::with('persona');
         return view('instructores.index',compact('persona'))->with('instructores',$instructores);
       }
@@ -49,7 +49,7 @@ class InstructorController extends Controller
             $persona->pers_direccion = $request->input('pers_direccion');
             $persona->pers_telefono = $request->input('pers_telefono');
             $persona->save();
-        $instructor = new Instructor;
+        $instructor = new Instructore;
                 $instructor->pers_id = $persona->id;     
                 $instructor->users_id = Auth::user()->id;
                 $instructor->inst_actividad = $request->input('inst_actividad');
@@ -66,7 +66,7 @@ class InstructorController extends Controller
     public function show($id)
     {
         //
-        $instructor = Instructor::find($id);
+        $instructor = Instructore::find($id);
         return view('instructores.show',compact('instructor'));
     }
 
@@ -79,7 +79,7 @@ class InstructorController extends Controller
     public function edit($id)
     {
         //
-        $instructor = Instructor::find($id);
+        $instructor = Instructore::find($id);
         return view('instructores.edit',compact('instructor'));
     }
 
@@ -92,7 +92,7 @@ class InstructorController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $instructor = Instructor::find($id);
+            $instructor = Instructore::find($id);
             $persona = Persona::find($instructor->pers_id);
             $persona->pers_nombre = $request->input('persona->pers_nombre'); 
             $persona->pers_apellido = $request->input('pers_apellido');
@@ -105,7 +105,7 @@ class InstructorController extends Controller
                 $Instructor->save();
                 $persona->save();
 
-        return redirect()->route('instructor.index')->with('success','Instructor created successfully');
+        return redirect()->route('instructores.index')->with('success','Instructor created successfully');
 }
 
     /**
@@ -117,7 +117,8 @@ class InstructorController extends Controller
     public function destroy($id)
     {
         //
-        Instructor::find($id)->delete();
-        return redirect()->route('instructor.index')->with('success','Instructor deleted successfully');
+        Instructore::find($id)->delete();
+        return redirect()->route('instructores.index')->with('success','Instructor deleted successfully');
     }
 }
+   
