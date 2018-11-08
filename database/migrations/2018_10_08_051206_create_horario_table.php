@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoutaTable extends Migration
+class CreateHorarioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCoutaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cuota', function (Blueprint $table) {
-            $table->increments('cuota_id');
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->integer('cuota_precio');
-            $table->string('cuota_moneda');
+        Schema::create('horario', function (Blueprint $table) {
+            $table->increments('id');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCoutaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cuota');
+        Schema::dropIfExists('horario');
     }
 }

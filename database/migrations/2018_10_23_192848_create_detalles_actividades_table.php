@@ -14,12 +14,15 @@ class CreateDetallesActividadesTable extends Migration
     public function up()
     {
         Schema::create('detalles_actividades', function (Blueprint $table) {
-            $table->increments('det_act_id');
+            $table->increments('id');
             $table->integer('inst_id')->unsigned();
-            $table->foreign('inst_id')->references('inst_id')->on('instructores');
+            $table->foreign('inst_id')->references('id')->on('instructores');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
-            $table->timestamp('det_act_horario');
+            $table->integer('horario_id')->unsigned();
+            $table->foreign('horario_id')->references('id')->on('horario');
+            $table->integer('act_id')->unsigned();
+            $table->foreign('act_id')->references('id')->on('actividades');
             $table->timestamps();
         });
     }

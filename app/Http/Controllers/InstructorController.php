@@ -93,7 +93,7 @@ class InstructorController extends Controller
     public function update(Request $request, $id)
     {
             $instructor = Instructore::find($id);
-            $persona = Persona::find($instructor->pers_id);
+            $persona = Persona::find($instructor->id);
             $persona->pers_nombre = $request->input('persona->pers_nombre'); 
             $persona->pers_apellido = $request->input('pers_apellido');
             $persona->pers_direccion = $request->input('pers_direccion');

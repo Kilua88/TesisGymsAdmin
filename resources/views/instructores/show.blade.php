@@ -17,7 +17,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                         <strong>Id:</strong>
-                        {{ $instructor->inst_id}}
+                        {{ $instructor->id}}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

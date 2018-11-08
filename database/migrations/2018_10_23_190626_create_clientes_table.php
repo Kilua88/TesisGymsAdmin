@@ -19,7 +19,9 @@ class CreateClientesTable extends Migration
             $table->foreign('pers_id')->references('id')->on('personas');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
-            $table->integer('cli_edad');
+            $table->string('cli_contact_nombre');
+            $table->string('cli_contact_apellido');
+            $table->integer('cli_contact_telefono');
             $table->timestamps();
             
         });

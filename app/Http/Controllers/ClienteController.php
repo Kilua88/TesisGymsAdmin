@@ -53,6 +53,7 @@ class ClienteController extends Controller
                     $cliente->users_id = Auth::user()->id;
                     $cliente->cli_edad = $request->input('cli_edad');
                     $cliente->save();
+                    
              return redirect()->route('clientes.index')->with('success','Cliente created successfully');
     }
 
