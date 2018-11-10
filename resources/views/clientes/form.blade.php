@@ -2,8 +2,14 @@
 <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+            <strong>DNI:</strong>
+            {!! Form::number('pers_dni', null, array('placeholder' => 'DNI','class' => 'form-control')) !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
             <strong>Nombre:</strong>
-            {!! Form::text('pers_nombre', null, array('placeholder' => 'Nombre','class' => 'form-control')) !!}
+            {!! Form::text('persona->pers_nombre', null, array('placeholder' => 'Nombre','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -26,8 +32,8 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-            <strong>Edad:</strong>
-            {!! Form::number('cli_edad', null, array('placeholder' => 'Direccion','class' => 'form-control')) !!}
+            <strong>Email:</strong>
+            {!! Form::email('pers_email', null, array('placeholder' => 'Telefono','class' => 'form-control')) !!}
             </div>
         </div>
         

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use App\Gimnasio;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -70,10 +71,17 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-
+    
         $user
             ->roles()
             ->attach(Role::where('name', 'gimnasio')->first());
+
+            $gimnasio = new Gimnasio;
+            $gimnasio->gym_nombre = $user->name;
+            $gimnasio->gym_direccion = 'fake street 123'; 
+            $gimnasio->gym_telefono = '12345';
+            $gimnasio->users_id = $user->id;
+            $gimnasio->save();
 
         return $user;
     }

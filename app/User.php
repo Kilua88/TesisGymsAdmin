@@ -70,4 +70,9 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function gimnasio(){
+        return $this->belongTo('App\Gimnasio');
+    }
+
 }

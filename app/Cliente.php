@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     protected $fillable = [
-        'cli_id',
-        'pers_id', 'users_id',
-        'cli_edad',
+        
+        'cli_contact_nombre', 'cli_contact_apellido','cli_contact_telefono'
+        
          ];
 
     public function persona(){

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\Controller\Auth;
 use App\User;
+use App\Gimnasio;
 use App\Menu;
 
 

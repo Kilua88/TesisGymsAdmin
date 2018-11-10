@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2>Edit Cliente</h2>
+<h2> Instructor</h2>
 </div>
 <div class="pull-right">
 <a class="btn btn-primary" href="{{ route('instructores.index') }}">
@@ -22,8 +22,8 @@ input.<br><br>
 </ul>
 </div>
 @endif
-{!! Form::model($instructor,['method'=> 'PATCH','route'=>['instructores.update', $instructor->inst_id]]) !!}
-@include('instructores.form')
+{!! Form::model($instructor,['method'=> 'PATCH','route'=>['instructores.update', $instructor->id]]) !!}
+@include('instructores.formedit')
 {!! Form::close() !!}
 
 

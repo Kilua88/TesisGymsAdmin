@@ -18,7 +18,7 @@ class InstructorController extends Controller
     public function index()
     {
        
-        $instructores = Instructore::all();
+        $instructores = Instructore::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');
         return view('instructores.index',compact('persona'))->with('instructores',$instructores);
       }
@@ -42,17 +42,18 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $persona = new Persona;
+            $persona->pers_dni = $request->input('pers_dni'); 
             $persona->pers_nombre = $request->input('pers_nombre'); 
             $persona->pers_apellido = $request->input('pers_apellido');
             $persona->pers_direccion = $request->input('pers_direccion');
             $persona->pers_telefono = $request->input('pers_telefono');
+            $persona->pers_email = $request->input('pers_email');
             $persona->save();
         $instructor = new Instructore;
                 $instructor->pers_id = $persona->id;     
                 $instructor->users_id = Auth::user()->id;
-                $instructor->inst_actividad = $request->input('inst_actividad');
                 $instructor->save();
         return redirect()->route('instructores.index')->with('success','Instructo created successfully');
 }
@@ -93,19 +94,21 @@ class InstructorController extends Controller
     public function update(Request $request, $id)
     {
             $instructor = Instructore::find($id);
-            $persona = Persona::find($instructor->id);
-            $persona->pers_nombre = $request->input('persona->pers_nombre'); 
+            $persona = Persona::find($instructor->pers_id);
+
+            $persona->pers_dni = $request->input('pers_dni'); 
+            $persona->pers_nombre = $request->input('pers_nombre'); 
             $persona->pers_apellido = $request->input('pers_apellido');
             $persona->pers_direccion = $request->input('pers_direccion');
             $persona->pers_telefono = $request->input('pers_telefono');
-            
+            $persona->pers_email = $request->input('pers_email');
+          
                 $instructor->pers_id = $persona->id;     
         
-                $instructor->cli_edad = $request->input('cli_edad');
-                $Instructor->save();
+                $instructor->save();
                 $persona->save();
 
-        return redirect()->route('instructores.index')->with('success','Instructor created successfully');
+        return redirect()->route('instructores.index')->with('success','Instructor edited successfully');
 }
 
     /**
