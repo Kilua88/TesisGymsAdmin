@@ -20,6 +20,7 @@ class CreateGimnasiosTable extends Migration
             $table->string('gym_nombre');
             $table->string('gym_direccion');
             $table->unsignedinteger('gym_telefono');
+            $table->string('gym_url');
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class CreatePersonasTable extends Migration
             $table->string('pers_direccion');
             $table->string('pers_telefono');
             $table->string('pers_email');
+            $table->boolean('estado')->default('true');
             $table->timestamps();
         });
     }

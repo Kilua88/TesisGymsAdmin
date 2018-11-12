@@ -22,6 +22,8 @@ class CreateClientesTable extends Migration
             $table->string('cli_contact_nombre');
             $table->string('cli_contact_apellido');
             $table->integer('cli_contact_telefono');
+            $table->boolean('cli_activo')->default('true');
+
             $table->timestamps();
             
         });
