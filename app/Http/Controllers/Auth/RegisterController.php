@@ -80,6 +80,7 @@ class RegisterController extends Controller
             $gimnasio->gym_nombre = $user->name;
             $gimnasio->gym_direccion = 'fake street 123'; 
             $gimnasio->gym_telefono = '12345';
+            $gimnasio->gym_url = $user->name;
             $gimnasio->users_id = $user->id;
             $gimnasio->save();
 

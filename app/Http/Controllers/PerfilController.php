@@ -10,20 +10,21 @@ use App\Menu;
 use Illuminate\Support\Facades\Auth;
 
 
-class GimnasioController extends Controller
+class PerfilController extends Controller
 {
-
-
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $gimnasios = User::all();
-      return view('gimnasios.index',compact('gimnasios'))->with('i', (request()->input('page', 1) - 1) * 5);
-     
+        $gimnasios = Gimnasio::where('users_id',Auth::user()->id)->get();
+        foreach ($gimnasios as $gimnasio){
+            if($gimnasio->users_id==Auth::user()->id){
+                return view('perfiles.index',compact('gimnasio'));
+            }
+        }
     }
 
     /**
@@ -33,9 +34,7 @@ class GimnasioController extends Controller
      */
     public function create()
     {
-        //
-        return view('gimnasios.create');
-    }
+         }
 
     /**
      * Store a newly created resource in storage.
@@ -45,13 +44,7 @@ class GimnasioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        request()->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            ]);
-            User::create($request->all());
-            return redirect()->route('gimnasios.index')->with('success','Gimnasio created successfully');
+      
     }
 
     /**
@@ -62,9 +55,7 @@ class GimnasioController extends Controller
      */
     public function show($id)
     {
-        //
-        $gimnasio = User::find($id);
-        return view('gimnasios.show',compact('gimnasio'));
+       
     }
 
     /**
@@ -75,9 +66,9 @@ class GimnasioController extends Controller
      */
     public function edit($id)
     {
-        //
-        $gimnasio = User::find($id);
-        return view('gimnasios.edit',compact('gimnasio'));
+        $gimnasio = Gimnasio::find($id);
+        return view('perfiles.edit',compact('gimnasio'));
+  
     }
 
     /**
@@ -89,13 +80,18 @@ class GimnasioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        request()->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            ]);
-            User::find($id)->update($request->all());
-            return redirect()->route('gimnasios.index')->with('success','Gimnasio updated successfully');
+        $gimnasio = Gimnasio::find($id);
+        $gimnasio->users->name = $request->input('users->name');
+        $gimnasio->gym_nombre  = $request->input('gym_nombre'); 
+        $gimnasio->gym_direccion = $request->input('gym_direccion'); 
+        $gimnasio->gym_telefono = $request->input('gym_telefono');
+        $gimnasio->gym_url = $request->input('gym_url');
+       
+            $gimnasio->users->save();
+            $gimnasio->save();
+
+    return redirect()->route('perfiles.index')->with('success','Instructor edited successfully');
+
     }
 
     /**
@@ -106,8 +102,8 @@ class GimnasioController extends Controller
      */
     public function destroy($id)
     {
-        //
-        User::find($id)->delete();
-        return redirect()->route('gimnasios.index')->with('success','Gimnasio deleted successfully');
+        Gimnasio::find($id)->delete();
+        return redirect()->route('perfiles.index')->with('success','Gimnasio deleted successfully');
+ 
     }
 }

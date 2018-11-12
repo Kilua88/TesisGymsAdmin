@@ -10,6 +10,7 @@ class Gimnasio extends Model
         'gym_nombre',
         'gym_direccion', 
         'gym_telefono',
+        'gym_url'
          ];
 
    
