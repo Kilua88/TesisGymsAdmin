@@ -4,7 +4,7 @@
         <div class="row">
         <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-        <h2>  Gimnasio</h2>
+        <h2 align="center">  Gimnasio</h2>
         </div>
         <div class="pull-right">
         <a class="btn btn-primary" href="{{ route('gimnasios.index') }}">
@@ -12,6 +12,7 @@
         </div>
         </div>
         </div>
+        <br>
             <div class="row">
             
                 <div class="col-xs-12 col-sm-12 col-md-12">

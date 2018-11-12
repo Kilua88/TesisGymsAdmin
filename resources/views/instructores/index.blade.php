@@ -5,14 +5,14 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2 align="center"> INSTRUCTORES </h2>
+            <h2 align="center"> Instructores </h2>
         </div>
         <div class="pull-right">
             <a class="btn  btn-success" href ="{{ route('instructores.create') }}"> Nuevo </a>
         </div>
     </div>
 </div>
-
+<br>
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
         <p>{{ $message }}</p>
@@ -35,10 +35,10 @@
 
 
             <td>
-                <a class="btn btn-info btn-sm" href="{{ route('instructores.show',$instructor->id)}}">Show</a>
-                <a class="btn btn-primary btn-sm" href="{{ route('instructores.edit',$instructor->id) }}">Edit</a>
+                <a class="btn btn-info btn-sm" href="{{ route('instructores.show',$instructor->id)}}">Ver</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('instructores.edit',$instructor->id) }}">Editar</a>
                 {!! Form::open(['method' => 'DELETE','route' => ['instructores.destroy',$instructor->id],'style'=>'display:inline']) !!}
-                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
                 {!! Form::close() !!}
 
             </td>

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2 align="center"> INSTRUCTOR </h2>
+                    <h2 align="center"> Instructor </h2>
                 </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('instructores.index') }}">
@@ -12,6 +12,9 @@
             </div>
             </div>
         </div>
+        <br><br><br>
+        <div class="container">
+
             <div class="row">
             
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -51,6 +54,7 @@
                         {{ $instructor->persona->pers_email}}
                     </div>
             </div>
+        </div>
            
         </div>
 @endsection

@@ -12,7 +12,8 @@
         </div>
         </div>
         </div>
-            <div class="row"  align="center">
+        <br>
+            <div class="row" >
             
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">

@@ -12,7 +12,7 @@
 </div>
 </div>
 </div>
-
+<br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -54,10 +54,10 @@
 </td>
 
 <td>
-<a class="btn btn-info btn-sm" href="{{ route('clientes.show',$cliente->id)}}">Show</a>
-<a class="btn btn-primary btn-sm" href="{{ route('clientes.edit',$cliente->id) }}">Edit</a>
+<a class="btn btn-info btn-sm" href="{{ route('clientes.show',$cliente->id)}}">Ver</a>
+<a class="btn btn-primary btn-sm" href="{{ route('clientes.edit',$cliente->id) }}">Editar</a>
 {!! Form::open(['method' => 'DELETE','route' => ['clientes.destroy',$cliente->id],'style'=>'display:inline']) !!}
-{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+{!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
 {!! Form::close() !!}
 
 </td>

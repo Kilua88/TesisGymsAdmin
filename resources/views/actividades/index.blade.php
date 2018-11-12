@@ -12,7 +12,7 @@
 </div>
 </div>
 </div>
-
+<br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -35,10 +35,10 @@
 <td>{{ $actividad->act_cuota}}</td>
 
 <td>
-<a class="btn btn-info btn-sm" href="{{ route('actividades.show',$actividad->id)}}">Show</a>
-<a class="btn btn-primary btn-sm" href="{{ route('actividades.edit',$actividad->id) }}">Edit</a>
+<a class="btn btn-info btn-sm" href="{{ route('actividades.show',$actividad->id)}}">Ver</a>
+<a class="btn btn-primary btn-sm" href="{{ route('actividades.edit',$actividad->id) }}">Editar</a>
 {!! Form::open(['method' => 'DELETE','route' => ['actividades.destroy',$actividad->id],'style'=>'display:inline']) !!}
-{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+{!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
 {!! Form::close() !!}
 
 </td>
