@@ -33,26 +33,26 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>Email:</strong>
-            {!! Form::email('pers_email', null, array('placeholder' => 'Direccion','class' => 'form-control')) !!}
+            {!! Form::email('pers_email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
             </div>
         </div>
         
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>Nombre del Contacto:</strong>
-            {!! Form::text('cli_contact_nombre', null, array('placeholder' => 'Telefono','class' => 'form-control')) !!}
+            {!! Form::text('cli_contact_nombre', null, array('placeholder' => 'Nombre del Contacto','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>Apellido del Contacto :</strong>
-            {!! Form::text('cli_contact_apellido', null, array('placeholder' => 'Telefono','class' => 'form-control')) !!}
+            {!! Form::text('cli_contact_apellido', null, array('placeholder' => 'Apellido del Contacto','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>Telefono del Contacto:</strong>
-            {!! Form::number('cli_contact_telefono', null, array('placeholder' => 'Telefono','class' => 'form-control')) !!}
+            {!! Form::number('cli_contact_telefono', null, array('placeholder' => 'Telefono del Contacto','class' => 'form-control')) !!}
             </div>
         </div>
         

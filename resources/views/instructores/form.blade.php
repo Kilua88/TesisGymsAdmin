@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>Email:</strong>
-            {!! Form::email('pers_email', null, array('placeholder' => 'Direccion','class' => 'form-control')) !!}
+            {!! Form::email('pers_email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
             </div>
         </div>
         
