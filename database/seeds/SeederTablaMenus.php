@@ -33,7 +33,7 @@ class SeederTablaMenus extends Seeder
 		]);
 		
 
-			/*----- COMPRADOR ----*/
+			/*----- GIMNASIO ----*/
     	
         //Padres de Raiz	
 		$m1 = factory(Menu::class)->create([
@@ -45,10 +45,18 @@ class SeederTablaMenus extends Seeder
 		]);
 		
 		$m2 = factory(Menu::class)->create([
+			'etiqueta' => 'Actividades',
+			'pagina' => 'actividades',
+			'padre' => 0,
+			'orden' => 1,
+			'rol' => 2,
+		]);
+
+		$m2 = factory(Menu::class)->create([
 			'etiqueta' => 'Instructores',
 			'pagina' => 'instructores',
 			'padre' => 0,
-			'orden' => 1,
+			'orden' => 2,
 			'rol' => 2,
 		]);
 		
@@ -58,7 +66,7 @@ class SeederTablaMenus extends Seeder
 			'etiqueta' => 'Clientes',
 			'pagina' => 'clientes',
 			'padre' => 0,
-			'orden' => 2,
+			'orden' => 3,
 			'rol' => 2,
 		]);
 
@@ -67,7 +75,7 @@ class SeederTablaMenus extends Seeder
 			'etiqueta' => 'Horarios',
 			'pagina' => 'horarios',
 			'padre' => 0,
-			'orden' => 3,
+			'orden' => 4,
 			'rol' => 2,
 		]);
 		
@@ -75,7 +83,7 @@ class SeederTablaMenus extends Seeder
 			'etiqueta' => 'Promociones',
 			'pagina' => 'promociones',
 			'padre' => 0,
-			'orden' => 3,
+			'orden' => 5,
 			'rol' => 2,
 		]);
     }

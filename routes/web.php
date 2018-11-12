@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('gimnasios', 'GimnasioController')->middleware('auth', 'rol:admin');
+Route::resource('actividades', 'ActividadesController');
 
 Route::resource('clientes', 'ClienteController');
 Route::resource('instructores', 'InstructorController');
