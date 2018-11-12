@@ -17,7 +17,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');
         return view('clientes.index',compact('persona'))->with('clientes',$clientes);
     }
@@ -43,15 +43,19 @@ class ClienteController extends Controller
        
             
             $persona = new Persona;
-                $persona->pers_nombre = $request->input('pers_nombre'); 
-                $persona->pers_apellido = $request->input('pers_apellido');
-                $persona->pers_direccion = $request->input('pers_direccion');
-                $persona->pers_telefono = $request->input('pers_telefono');
-                $persona->save();
+                    $persona->pers_dni = $request->input('pers_dni'); 
+                    $persona->pers_nombre = $request->input('pers_nombre'); 
+                    $persona->pers_apellido = $request->input('pers_apellido');
+                    $persona->pers_direccion = $request->input('pers_direccion');
+                    $persona->pers_telefono = $request->input('pers_telefono');
+                    $persona->pers_email = $request->input('pers_email');
+                    $persona->save();
             $cliente = new Cliente;
                     $cliente->pers_id = $persona->id;     
                     $cliente->users_id = Auth::user()->id;
-                    $cliente->cli_edad = $request->input('cli_edad');
+                    $cliente->cli_contact_nombre = $request->input('cli_contact_nombre');
+                    $cliente->cli_contact_apellido = $request->input('cli_contact_apellido');
+                    $cliente->cli_contact_telefono = $request->input('cli_contact_telefono');
                     $cliente->save();
                     
              return redirect()->route('clientes.index')->with('success','Cliente created successfully');
@@ -95,14 +99,18 @@ class ClienteController extends Controller
        
             $cliente = Cliente::find($id);
             $persona = Persona::find($cliente->pers_id);
-            $persona->pers_nombre = $request->input('persona->pers_nombre'); 
-                $persona->pers_apellido = $request->input('pers_apellido');
-                $persona->pers_direccion = $request->input('pers_direccion');
-                $persona->pers_telefono = $request->input('pers_telefono');
+                    $persona->pers_dni = $request->input('pers_dni'); 
+                    $persona->pers_nombre = $request->input('pers_nombre'); 
+                    $persona->pers_apellido = $request->input('pers_apellido');
+                    $persona->pers_direccion = $request->input('pers_direccion');
+                    $persona->pers_telefono = $request->input('pers_telefono');
+                    $persona->pers_email = $request->input('pers_email');
                 
                     $cliente->pers_id = $persona->id;     
-            
-                    $cliente->cli_edad = $request->input('cli_edad');
+                    $cliente->cli_contact_nombre = $request->input('cli_contact_nombre');
+                    $cliente->cli_contact_apellido = $request->input('cli_contact_apellido');
+                    $cliente->cli_contact_telefono = $request->input('cli_contact_telefono');
+                   
                     $cliente->save();
                     $persona->save();
 
@@ -118,7 +126,7 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         
-        Clientes::find($id)->delete();
-        return redirect()->route('clientes.index')->with('success','Gimnasio deleted successfully');
+        Cliente::find($id)->delete();
+        return redirect()->route('clientes.index')->with('success','Cliente deleted successfully');
     }
 }

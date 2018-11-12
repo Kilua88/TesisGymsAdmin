@@ -119,7 +119,7 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
         Instructore::find($id)->delete();
         return redirect()->route('instructores.index')->with('success','Instructor deleted successfully');
     }

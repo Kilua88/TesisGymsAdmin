@@ -3,11 +3,11 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2>Edit Cliente</h2>
+<h2 align="center">Editar Cliente</h2>
 </div>
 <div class="pull-right">
 <a class="btn btn-primary" href="{{ route('clientes.index') }}">
-Back</a>
+Volver</a>
 </div>
 </div>
 </div>
@@ -23,7 +23,7 @@ input.<br><br>
 </div>
 @endif
 {!! Form::model($cliente,['method'=> 'PATCH','route'=>['clientes.update', $cliente->id]]) !!}
-@include('clientes.form')
+@include('clientes.formedit')
 {!! Form::close() !!}
 
 
