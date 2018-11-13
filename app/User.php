@@ -34,6 +34,9 @@ class User extends Authenticatable
     public function clientes(){
         return $this->hsAnyMany('App\Cliente','users_id');
     }
+    public function imagenes(){
+        return $this->hsAnyMany('App\Image_Sliders','users_id');
+    }
 
     public function actividades(){
         return $this->hsAnyMany('App\Actividade','users_id');

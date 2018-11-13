@@ -40,9 +40,7 @@
 
 <td>
 <a class="btn btn-primary btn-sm" href="{{ route('perfiles.edit',$gimnasio->id) }}">Editar</a>
-{!! Form::open(['method' => 'DELETE','route' => ['perfiles.destroy',$gimnasio->id],'style'=>'display:inline']) !!}
-{!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
-{!! Form::close() !!}
+
 
 </td>
 </tr>

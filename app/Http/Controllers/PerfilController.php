@@ -90,7 +90,7 @@ class PerfilController extends Controller
             $gimnasio->users->save();
             $gimnasio->save();
 
-    return redirect()->route('perfiles.index')->with('success','Instructor edited successfully');
+    return redirect()->route('perfiles.index')->with('success','Perfil edited successfully');
 
     }
 
@@ -102,8 +102,5 @@ class PerfilController extends Controller
      */
     public function destroy($id)
     {
-        Gimnasio::find($id)->delete();
-        return redirect()->route('perfiles.index')->with('success','Gimnasio deleted successfully');
- 
     }
 }

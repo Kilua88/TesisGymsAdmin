@@ -8,16 +8,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+ 
+        <!-- Enlace a archivo bootstrap -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}"/>
+        
+         <!-- Enlaces de los js -->
+         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/moment.min.js') }}"></script>
+        <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -83,5 +85,9 @@
             
         </main>
     </div>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/moment.min.js') }}"></script>
+        <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
 </body>
 </html>

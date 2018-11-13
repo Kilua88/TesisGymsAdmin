@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\Role;
 use App\User;
+use App\Gimnasio;
 
 
 
@@ -33,6 +34,7 @@ class UserTableSeeder extends Seeder
 
 
 
+
         $user = new User();
         $user->name = 'Gimnasio';
         $user->email = 'user@example.com';
@@ -42,5 +44,13 @@ class UserTableSeeder extends Seeder
         
         $user->roles()->attach($role_gimnasio);
         
+        $gym= new Gimnasio();
+        
+        $gym->gym_nombre = 'Gimnasio';
+        $gym->gym_direccion = 'calle falsa 123';
+        $gym->gym_telefono = '123456789';
+        $gym->gym_url = 'gimnasio';
+        $gym->users_id = $user->id;
+        $gym->save();
     }
 }

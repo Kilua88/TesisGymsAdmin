@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/moment.min.js') }}"></script>
+        <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -25,7 +30,13 @@
                     <div>Acceso como administrador</div>
                 @else
                     @if( Auth::user()->hasRole('gimnasio') )
-                            <div>Acceso Gimnasio {{Auth::user()->rol}}</div>
+                            <div class="container">Acceso Gimnasio {{Auth::user()->rol}}</div>
+                            
+                                <div class="slider">
+
+                                @include('slider.slider',array('slides'=>DB::table('image__sliders')->get()))
+                                </div>
+                             
                         
                         @endif
                 @endif
