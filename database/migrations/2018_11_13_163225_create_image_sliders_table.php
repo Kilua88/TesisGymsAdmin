@@ -20,6 +20,8 @@ class CreateImageSlidersTable extends Migration
             $table->string('descripcion');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
+            $table->boolean('estado')->default(true);
+            $table->string('tipo_foto');
             $table->timestamps();
         });
     }

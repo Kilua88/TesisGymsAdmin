@@ -8,10 +8,10 @@
     <div class='carousel-inner'>
         @foreach($slides as $item)
             <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-                <center><img src="{{ url($item->url) }}" alt="{{ $item->titulos }}" style="margin: auto;" heigth=512 width=1024></center>
+                <center><img src="{{ url($item->url) }}" alt="{{ $item->titulos }}" style="margin: auto;" heigth=512 width=512></center>
                 <div class="carousel-caption">
-                    <h1 style="color:#2e86c1; text-shadow: 5px 5px 5px black;">{{ $item->titulos }}</h1>
-                    <h3 style="color:white; text-shadow: 5px 5px 5px black;">{{ $item->descripcion}}</h3>
+                    <h1 style="color:#2e86c1"; text-shadow: "5px 5px 5px black;">{{ $item->titulos }}</h1>
+                    <h3 style="color:white"; text-shadow: "5px 5px 5px black;">{{ $item->descripcion}}</h3>
                 </div>
             </div>
         @endforeach

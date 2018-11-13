@@ -52,7 +52,7 @@ class SeederTablaMenus extends Seeder
 			'rol' => 2,
 		]);
 
-		$m2 = factory(Menu::class)->create([
+		$m3 = factory(Menu::class)->create([
 			'etiqueta' => 'Instructores',
 			'pagina' => 'instructores',
 			'padre' => 0,
@@ -62,7 +62,7 @@ class SeederTablaMenus extends Seeder
 		
 		
 			
-		$m3 = factory(Menu::class)->create([
+		$m4 = factory(Menu::class)->create([
 			'etiqueta' => 'Clientes',
 			'pagina' => 'clientes',
 			'padre' => 0,
@@ -71,7 +71,7 @@ class SeederTablaMenus extends Seeder
 		]);
 
 
-		$m4 = factory(Menu::class)->create([
+		$m5 = factory(Menu::class)->create([
 			'etiqueta' => 'Horarios',
 			'pagina' => 'horarios',
 			'padre' => 0,
@@ -79,11 +79,18 @@ class SeederTablaMenus extends Seeder
 			'rol' => 2,
 		]);
 		
-		$m4 = factory(Menu::class)->create([
+		$m6 = factory(Menu::class)->create([
 			'etiqueta' => 'Promociones',
 			'pagina' => 'promociones',
 			'padre' => 0,
 			'orden' => 5,
+			'rol' => 2,
+		]);
+		factory(Menu::class)->create([
+			'etiqueta' => 'Mis Imagenes',
+			'pagina' => 'imagenes',
+			'padre' => $m6->id,
+			'orden' => 0,
 			'rol' => 2,
 		]);
     }
