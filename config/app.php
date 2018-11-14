@@ -164,6 +164,8 @@ return [
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
+        Spatie\Menu\Laravel\MenuServiceProvider :: class ,
+        Laravel\Passport\PassportServiceProvider :: class , 
         /*
          * Application Service Providers...
          */

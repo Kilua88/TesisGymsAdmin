@@ -8,8 +8,10 @@ class Image_Sliders extends Model
 {
     protected $fillable = [
         'url',
+        'nombre_foto',
         'titulos', 
-        'descripcion'
+        'descripcion',
+        'estado'
          ];
 
    

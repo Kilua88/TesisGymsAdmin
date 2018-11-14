@@ -11,7 +11,9 @@
             <strong>Descripcion:</strong>
             {!! Form::text('descripcion', $imagene->descripcion, array('placeholder' => 'Nombre','class' => 'form-control')) !!}
             </div>
-        </div>      
+        </div>  
+
+            
         
         
 

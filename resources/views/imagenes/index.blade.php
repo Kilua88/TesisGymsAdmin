@@ -1,16 +1,13 @@
 
 
 @extends('home')
-
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2 align="center"> Mis Imagenes </h2>
         </div>
-        <div class="pull-right">
-           @include('new')
-             </div>
+      
     </div>
 </div>
 <br>
@@ -19,25 +16,28 @@
         <p>{{ $message }}</p>
     </div>
 @endif
+<div class="container">
+<div class="container-fluid">
 <table class="table table-bordered">
     <tr>
         <th>URL</th>
         <th>Titulo</th>
         <th>Descripcion</th>
-        <th>imagen</th>
+        <th>Imagen</th>
 
         <th width="280px">Acciones</th>
     </tr>
     @foreach ($imagenes as $imagene)
         <tr>
-            <td>{{  $imagene->url}}</td>
-            <td>{{  $imagene->titulos}}</td>
-            <td>{{  $imagene->descripcion}}</td>
+            <td>{{$imagene->url}}</td>
+            <td>{{$imagene->titulos}}</td>
+            <td>{{$imagene->descripcion}}</td>
             <td> <div class="col-sm-6 col-md-3">
-                 <a href="#" class="thumbnail">
+                 <a href="{{$imagene->url}}" class="thumbnail">
                     <img src="{{$imagene->url}}" alt="..." width="100px" height="100px">
                 </a>
-                </div></td>
+                </div>
+            </td>
 
 
 
@@ -51,5 +51,10 @@
         </tr>
     @endforeach
 </table>
+</div>
+<div class="pull-right">
+            @include('new')  
+         </div>
+
 @endsection
   

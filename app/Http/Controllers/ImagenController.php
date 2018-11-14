@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Image_Sliders;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ImagenController extends Controller
 {
@@ -97,6 +98,9 @@ class ImagenController extends Controller
      */
     public function destroy($id)
     {
+        $imagen = Image_Sliders::find($id);
+
+        Storage::delete($imagen->nombre_foto);
         Image_Sliders::find($id)->delete();
         return redirect()->route('imagenes.index')->with('success','Actividad deleted successfully');
 

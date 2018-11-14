@@ -42,12 +42,13 @@ class StorageController extends Controller
         if($band){
                 $imagen = new Image_Sliders;
                 $imagen->titulos = $nombre;
+                $imagen->nombre_foto = Auth::user()->id.'_'.$nombre;
                 $imagen->descripcion = $nombre;
                 $imagen->url = 'app/'.$path;
                 $imagen->users_id = Auth::user()->id;
                 $imagen->save();
-                return \View::make('home');
+              
         }
-        return \View::make('new');
+        return \View::make('home');
     }
 }

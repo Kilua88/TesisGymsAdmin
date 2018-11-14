@@ -31,9 +31,7 @@
 
                                 @include('slider.slider',array('slides'=>DB::table('image__sliders')->where('users_id','=',Auth::id())->get()))
                                 </div>
-                                <div class="row">
-                                @include('new')
-                                </div>
+                               
                              
                         
                         @endif
