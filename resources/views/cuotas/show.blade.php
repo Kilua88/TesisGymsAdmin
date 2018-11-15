@@ -7,7 +7,7 @@
                     <h2 align="center"> Instructor </h2>
                 </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('instructores.index') }}">
+                <a class="btn btn-primary" href="{{ route('cuotas.index') }}">
                     Volver </a>
             </div>
             </div>
@@ -19,41 +19,50 @@
             
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                        <strong>DNI:</strong>
-                        {{ $instructor->persona->pers_dni}}
+                        <strong>Id:</strong>
+                        {{ $cuotadetalle->id}}
                     </div>
                 </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                         <strong>Nombre:</strong>
-                        {{ $instructor->persona->pers_nombre}}
+                        {{ $cliente->persona->pers_nombre}}
                     </div>
                 </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                         <strong>Apellido:</strong>
-                        {{ $instructor->persona->pers_apellido}}
+                        {{ $cliente->persona->pers_apellido}}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                        <strong>Fecha:</strong>
+                        {{ $cuotadetalle->det_cuota_inicio }}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                        <strong>Actividad:</strong>
+                        {{ $actividade->act_nombre}}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                        <strong>Direccion:</strong>
-                        {{ $instructor->persona->pers_direccion}}
+                        <strong>Moneda:</strong>
+                        {{ $cuotadetalle->moneda}}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                        <strong>Telefono:</strong>
-                        {{ $instructor->persona->pers_telefono}}
+                        <strong>Valor:</strong>
+                        {{ $cuotadetalle->valor}}
                     </div>
                 </div>
-                
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Email:</strong>
-                        {{ $instructor->persona->pers_email}}
-                    </div>
-            </div>
         </div>
            
         </div>

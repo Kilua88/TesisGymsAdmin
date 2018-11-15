@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Actividade;
+use App\User;
+use App\Moneda;
+use App\Persona;
+use App\Cliente;
+use App\DetalleCuota;
+use Illuminate\Support\Facades\Auth;
 
-class PagosClientesController extends Controller
+class DetalleCuotasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +20,14 @@ class PagosClientesController extends Controller
      */
     public function index()
     {
-        //
+        
+        $cuotadetalles = DetalleCuota::where('users_id',Auth::user()->id)->orderBy('det_cuota_inicio','DESC')->get();
+        $actividades = Actividade::where('users_id',Auth::user()->id)->get();
+        $clientes = Cliente::where('users_id',Auth::user()->id)->get();
+        $persona = Persona::with('persona');
+
+        return view('cuotas.index',compact('cuotadetalles','actividades','persona'))->with('clientes',$clientes);
+   
     }
 
     /**
@@ -45,7 +59,13 @@ class PagosClientesController extends Controller
      */
     public function show($id)
     {
-        //
+        $cuotadetalle = DetalleCuota::find($id);
+        $actividade = Actividade::find($cuotadetalle->act_id);
+        $cliente = Cliente::find($cuotadetalle->cli_id);
+        $persona = Persona::with('persona');
+
+        return view('cuotas.show',compact('cuotadetalle','actividade','persona'))->with('cliente',$cliente);
+   
     }
 
     /**

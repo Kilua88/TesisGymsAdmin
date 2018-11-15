@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2 align="center"> Instructores </h2>
+            <h2 align="center"> Cuotas  </h2>
         </div>
         <div class="pull-right">
             <a class="btn  btn-success" href ="{{ route('instructores.create') }}"> Nuevo </a>
@@ -20,24 +20,38 @@
 @endif
 <table class="table table-bordered">
     <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>DNI</th>
+        <th>Cuota Pagada</th>
+        <th>Actividad Pagada </th>
+        <th>Moneda</th>
+        <th>Valor</th>
+        <th>Cliente Nombre</th>
+        <th>Cliente Apellido</th>
 
         <th width="280px">Acciones</th>
     </tr>
-    @foreach ($instructores as $instructor)
+    @foreach ( $cuotadetalles as $cuotadetalle )
         <tr>
-            <td>{{ $instructor->persona->pers_nombre}}</td>
-            <td>{{ $instructor->persona->pers_apellido}}</td>
-            <td>{{ $instructor->persona->pers_dni}}</td>
+            <td>{{ $cuotadetalle->det_cuota_inicio }}</td>
+            
+            @foreach ( $actividades as $actividade )
+                @if( $actividade->id == $cuotadetalle->act_id )
+                    <td>{{ $actividade->act_nombre }}</td>
+                @endif
+            @endforeach
 
-
+            <td>{{ $cuotadetalle->moneda}}</td>
+            <td>{{ $cuotadetalle->valor}}</td>
+            
+            @foreach ( $clientes as $cliente )
+                @if($cliente->id == $cuotadetalle->cli_id)
+                    <td>{{ $cliente->persona->pers_nombre }}</td>
+                    <td>{{ $cliente->persona->pers_apellido }}</td>
+                @endif
+            @endforeach
 
             <td>
-                <a class="btn btn-info btn-sm" href="{{ route('instructores.show',$instructor->id)}}">Ver</a>
-                <a class="btn btn-primary btn-sm" href="{{ route('instructores.edit',$instructor->id) }}">Editar</a>
-                {!! Form::open(['method' => 'DELETE','route' => ['instructores.destroy',$instructor->id],'style'=>'display:inline']) !!}
+                <a class="btn btn-info btn-sm" href="{{ route('cuotas.show',$cuotadetalle->id)}}">Ver</a>
+                {!! Form::open(['method' => 'DELETE','route' => ['instructores.destroy',$cuotadetalle->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
                 {!! Form::close() !!}
 

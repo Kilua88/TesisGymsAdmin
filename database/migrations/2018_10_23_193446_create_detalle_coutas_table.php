@@ -21,11 +21,10 @@ class CreateDetalleCoutasTable extends Migration
             $table->foreign('act_id')->references('id')->on('actividades');
             $table->integer('cli_id')->unsigned();
             $table->foreign('cli_id')->references('id')->on('clientes');
-            $table->string('moneda')->default('Peso $');
+            $table->string('moneda');
             $table->unsignedinteger('valor');
             $table->timestamp('det_cuota_inicio');
             $table->timestamp('det_cuota_fin');
-            $table->string('det_cuota_mes');
             $table->timestamps();
         });
     }

@@ -80,10 +80,18 @@ class SeederTablaMenus extends Seeder
 		]);
 		
 		$m6 = factory(Menu::class)->create([
-			'etiqueta' => 'Promociones',
-			'pagina' => 'promociones',
+			'etiqueta' => 'Mis Archivos',
+			'pagina' => 'archivos',
 			'padre' => 0,
 			'orden' => 5,
+			'rol' => 2,
+		]);
+
+		$m7 = factory(Menu::class)->create([
+			'etiqueta' => 'Cuotas',
+			'pagina' => 'cuotas',
+			'padre' => 0,
+			'orden' => 6,
 			'rol' => 2,
 		]);
 		factory(Menu::class)->create([
@@ -93,13 +101,14 @@ class SeederTablaMenus extends Seeder
 			'orden' => 0,
 			'rol' => 2,
 		]);
-
 		factory(Menu::class)->create([
-			'etiqueta' => 'Cuotas',
-			'pagina' => 'cuotas',
-			'padre' => $m4->id,
-			'orden' => 0,
+			'etiqueta' => 'Mis Promociones',
+			'pagina' => 'promociones',
+			'padre' => $m6->id,
+			'orden' => 1,
 			'rol' => 2,
 		]);
+
+		
     }
 }

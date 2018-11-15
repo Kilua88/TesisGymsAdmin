@@ -9,9 +9,10 @@
        
         <div class="form-group ">
             <label class="col-sm-2 col-form-label">Moneda  </label>
-            <div class="col-sm-10">
+            <div class="col-sm-12">
             
                 <select id="moneda" name='moneda' class="form-control" style="text-align:rigth;">
+                        <option selected="true" disabled="disabled">Seleccione una moneda</option>
                     @foreach($monedas as $moneda)
                         <option value="{{$moneda->id}}">{{$moneda->tipo_moneda}} </option>
                     @endforeach
