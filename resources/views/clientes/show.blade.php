@@ -90,6 +90,11 @@
                     </div>
             </div>
 
+             <div class="pull-right" >
+        <a class="btn btn-primary" href="cuotas">
+        Pagar Cuota </a>
+        </div>
+
 
            
         </div>

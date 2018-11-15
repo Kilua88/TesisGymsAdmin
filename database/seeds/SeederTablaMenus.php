@@ -93,5 +93,13 @@ class SeederTablaMenus extends Seeder
 			'orden' => 0,
 			'rol' => 2,
 		]);
+
+		factory(Menu::class)->create([
+			'etiqueta' => 'Cuotas',
+			'pagina' => 'cuotas',
+			'padre' => $m4->id,
+			'orden' => 0,
+			'rol' => 2,
+		]);
     }
 }

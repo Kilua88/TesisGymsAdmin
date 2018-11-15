@@ -15,6 +15,8 @@ class CreateDetalleCoutasTable extends Migration
     {
         Schema::create('detalle_cuotas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')->references('id')->on('users');
             $table->integer('act_id')->unsigned();
             $table->foreign('act_id')->references('id')->on('actividades');
             $table->integer('cli_id')->unsigned();

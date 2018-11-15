@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Actividade;
 use App\User;
+use App\Moneda;
 use Illuminate\Support\Facades\Auth;
 
 class ActividadesController extends Controller
@@ -16,9 +17,10 @@ class ActividadesController extends Controller
      */
     public function index()
     {
-        $actividades = Actividade::where('users_id',Auth::user()->id)->get();
         
-        return view('actividades.index')->with('actividades',$actividades);
+        $actividades = Actividade::where('users_id',Auth::user()->id)->get();
+        $monedas = Moneda::all();
+        return view('actividades.index',compact('monedas'))->with('actividades',$actividades);
   
     }
 
@@ -29,7 +31,8 @@ class ActividadesController extends Controller
      */
     public function create()
     {
-        return view('actividades.create');
+        $monedas = Moneda::all();
+        return view('actividades.create',compact('monedas'));
   
     }
 
@@ -44,7 +47,8 @@ class ActividadesController extends Controller
         $actividad = new Actividade; 
         $actividad->users_id = Auth::user()->id;
         $actividad->act_nombre = $request->input('act_nombre');
-        $actividad->act_moneda = $request->input('act_moneda');
+        $actividad->monedas_id = $request->get('moneda');
+        
         $actividad->act_cuota = $request->input('act_cuota');
         $actividad->save();
         
@@ -61,8 +65,8 @@ class ActividadesController extends Controller
     public function show($id)
     {
         $actividad = Actividade::find($id);
-
-        return view('actividades.show')->with('actividad',$actividad);
+        $moneda = Moneda::find($actividad->monedas_id);
+        return view('actividades.show',compact('moneda'))->with('actividad',$actividad);
   
     }
 
@@ -74,9 +78,9 @@ class ActividadesController extends Controller
      */
     public function edit($id)
     {
-        
         $actividad = Actividade::find($id);
-        return view('actividades.edit',compact('actividad'));
+        $monedas = Moneda::all();
+        return view('actividades.edit',compact('monedas'))->with('actividad',$actividad);
   
     }
 
@@ -90,9 +94,8 @@ class ActividadesController extends Controller
     public function update(Request $request, $id)
     {
         $actividad = Actividade::find($id);
-        
         $actividad->act_nombre = $request->input('act_nombre');
-        $actividad->act_moneda = $request->input('act_moneda');
+        $actividad->monedas_id = $request->get('moneda');
         $actividad->act_cuota = $request->input('act_cuota');
         $actividad->save();
 

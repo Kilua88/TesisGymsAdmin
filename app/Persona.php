@@ -13,14 +13,14 @@ class Persona extends Model
         ];
 
     public function persona(){
-        return $this->belongTo('App\Persona');
+        return $this->belongsTo('App\Persona');
     }
 
     public function cliente(){
-        return $this->belongTo('App\Cliente','pers_id');
+        return $this->belongsTo('App\Cliente','pers_id');
     }
     
     public function instructores(){
-        return $this->belongTo('App\Instructore','pers_id');
+        return $this->belongsTo('App\Instructore','pers_id');
     }
 }

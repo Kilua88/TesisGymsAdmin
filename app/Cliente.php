@@ -20,4 +20,8 @@ class Cliente extends Model
     public function users(){
         return $this->belongsTo('App\User','users_id');
     }
+
+    public function detallecoutas(){
+        return $this->hasMany('App\DetalleCuota','cli_id');
+    }
 }

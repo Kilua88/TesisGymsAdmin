@@ -25,7 +25,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                         <strong>Moneda:</strong>
-                        {{ $actividad->act_moneda}}
+                        {{ $moneda->tipo_moneda}}
                     </div>
                 </div>
 

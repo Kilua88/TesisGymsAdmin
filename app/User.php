@@ -32,17 +32,17 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role')->withTimestamps();
     }
     public function clientes(){
-        return $this->hsAnyMany('App\Cliente','users_id');
+        return $this->hasMany('App\Cliente','users_id');
     }
     public function imagenes(){
-        return $this->hsAnyMany('App\Image_Sliders','users_id');
+        return $this->hasMany('App\Image_Sliders','users_id');
     }
 
     public function actividades(){
-        return $this->hsAnyMany('App\Actividade','users_id');
+        return $this->hasMany('App\Actividade','users_id');
     }
     public function instructores(){
-        return $this->hsAnyMany('App\Instructore','users_id');
+        return $this->hasMany('App\Instructore','users_id');
     }
 
     public function authorizeRoles($roles)
@@ -78,7 +78,11 @@ class User extends Authenticatable
     }
 
     public function gimnasio(){
-        return $this->belongTo('App\Gimnasio');
+        return $this->belongsTo('App\Gimnasio');
+    }
+
+    public function detallecuotas(){
+        return $this->hasMany('App\DetalleCuota','users_id');
     }
 
 }

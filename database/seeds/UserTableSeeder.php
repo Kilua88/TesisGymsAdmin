@@ -10,7 +10,7 @@ use App\Persona;
 use App\Instructore;
 use App\Actividade;
 use App\Image_Sliders;
-
+use App\Moneda;
 
 
 class UserTableSeeder extends Seeder
@@ -58,6 +58,8 @@ class UserTableSeeder extends Seeder
         $gym->users_id = $user->id;
         $gym->save();
 
+
+
         $persona = new Persona;
         $persona->pers_dni = '677547'; 
         $persona->pers_nombre = 'Juan'; 
@@ -70,6 +72,8 @@ class UserTableSeeder extends Seeder
             $instructor->pers_id = $persona->id;     
             $instructor->users_id = $user->id;;
             $instructor->save();
+
+
 
             $persona = new Persona;
             $persona->pers_dni = '4221324'; 
@@ -87,12 +91,13 @@ class UserTableSeeder extends Seeder
             $cliente->cli_contact_telefono = '1234';
             $cliente->save();
 
-
-
+            
+            $moneda= Moneda::find(1);
+            
             $actividad = new Actividade; 
             $actividad->users_id =$user->id;;
             $actividad->act_nombre = 'Full';
-            $actividad->act_moneda = 'Pesos $';
+            $actividad->monedas_id = $moneda->id;
             $actividad->act_cuota = '690';
             $actividad->save();
 

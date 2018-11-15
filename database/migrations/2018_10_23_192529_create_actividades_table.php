@@ -18,7 +18,8 @@ class CreateActividadesTable extends Migration
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
             $table->string('act_nombre');
-            $table->string('act_moneda')->default('Pesos $');
+            $table->integer('monedas_id')->unsigned();
+            $table->foreign('monedas_id')->references('id')->on('monedas');
             $table->unsignedinteger('act_cuota')->default(0);
             $table->timestamps();
         });

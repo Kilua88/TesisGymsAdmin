@@ -31,7 +31,11 @@
 <tr>
 <td>{{ $actividad->id }}</td>
 <td>{{ $actividad->act_nombre}}</td>
-<td>{{ $actividad->act_moneda}}</td>
+        @foreach ($monedas as $moneda)
+            @if($moneda->id == $actividad->monedas_id)
+                <td>{{ $moneda->tipo_moneda}}</td>
+            @endif
+        @endforeach
 <td>{{ $actividad->act_cuota}}</td>
 
 <td>
