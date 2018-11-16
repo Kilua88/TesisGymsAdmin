@@ -90,10 +90,69 @@
                     </div>
             </div>
 
-             <div class="pull-right" >
-        <a class="btn btn-primary" href="cuotas">
-        Pagar Cuota </a>
+           </div>
+           <div class="row">
+             <div class="pull-lefth" >
+        <a class="btn btn-primary" href="{{ route('inscripciones.create') }}">
+        Inscribir </a>
+        <input type="hidden" name="id_clientes" value="{{$cliente->id}}">
+
         </div>
+        </div>
+        <br><br>
+
+             <div class="pull-right" >
+        
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Cuota Pagada</th>
+        <th>Actividad Pagada </th>
+        <th>Vencimiento</th>
+        <th>Estado</th>
+        
+        <th width="280px">Acciones</th>
+    </tr>
+   
+   
+            @foreach ( $cuotadetalles as $cuotadetalle )
+              <tr>
+                    @if($cliente->id == $cuotadetalle->cli_id)
+                        <td>{{ $cuotadetalle->det_cuota_inicio }}</td>
+                       
+                        @foreach ( $actividades as $actividade )
+                            @if( $actividade->id == $cuotadetalle->act_id )
+                                <td>{{ $actividade->act_nombre }}</td>
+                            @endif
+                        @endforeach
+
+                        <td>{{ $cuotadetalle->det_cuota_fin }}</td>
+                    
+                    @endif
+          
+                   
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Status:</strong>
+                        @if($cuotadetalle->det_cuota_estado)
+                            <td><a class="btn-sm  btn-success" disabled="disabled" >ACTIVO</a></td>
+                         @else
+                            <td> <a class="btn-sm btn-danger" disabled="disabled" >INACTIVO</a></td>
+                        @endif    
+                    </div>
+            </div>
+           
+            <td>
+                <a class="btn btn-info btn-sm" href="{{ route('cuotas.show',$cuotadetalle->id)}}">Ver</a>
+                {!! Form::open(['method' => 'DELETE','route' => ['inscripciones.destroy',$cuotadetalle->id],'style'=>'display:inline']) !!}
+                {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
+                {!! Form::close() !!}
+
+            </td>
+        </tr>
+    @endforeach
+</table>
 
 
            

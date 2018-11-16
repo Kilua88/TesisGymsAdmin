@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('estado')->default('true');
             $table->string('password');
             $table->boolean('user_borrado')->default('false');
+            $table->integer('user_ayuda')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -6,7 +6,7 @@
             <h2 align="center"> Nueva Inscripcion</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('cuotas.index') }}">Volver</a>
+            <a class="btn btn-primary" href="{{ route('clientes.index') }}">Volver</a>
         </div>
     </div>
 </div>
@@ -20,9 +20,12 @@
                 @endforeach
             </ul>
     </div>
+    
 @endif
-{!! Form::open( ['method' => 'POST', 'route' => ['cuotas.store',$id]]) !!}
-            @include('cuotas.form')
+
+{!! Form::open( ['method' => 'POST', 'route' => ['inscripciones.store']]) !!}
+            @include('inscripciones.form')
 {!! Form::close() !!}
             @endsection
+
 

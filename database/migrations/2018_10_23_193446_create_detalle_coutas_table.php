@@ -25,6 +25,7 @@ class CreateDetalleCoutasTable extends Migration
             $table->unsignedinteger('valor');
             $table->timestamp('det_cuota_inicio');
             $table->timestamp('det_cuota_fin');
+            $table->boolean('det_cuota_estado')->default(true);
             $table->timestamps();
         });
     }

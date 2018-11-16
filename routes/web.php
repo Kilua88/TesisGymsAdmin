@@ -37,6 +37,7 @@ Route::resource('gimnasios', 'GimnasioController')->middleware('auth', 'rol:admi
 Route::resource('actividades', 'ActividadesController');
 Route::resource('imagenes', 'ImagenController');
 Route::resource('cuotas', 'DetalleCuotasController');
+Route::resource('inscripciones', 'InscripcionesController');
 Route::resource('clientes', 'ClienteController');
 Route::resource('instructores', 'InstructorController');
 Route::resource('perfiles', 'PerfilController');

@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Cliente;
 use App\Persona;
 use App\User;
+use App\Actividade;
+use App\Moneda;
+use App\DetalleCuota;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ClienteController extends Controller
 {
@@ -17,6 +21,22 @@ class ClienteController extends Controller
      */
     public function index()
     {
+
+        $hoy = Carbon::now();
+        $cuotadetalles = DetalleCuota::where('users_id',Auth::user()->id)->get();
+        foreach( $cuotadetalles as $cuotadetalle){
+
+            if($cuotadetalle->det_cuota_estado){
+                $estado = $hoy->greaterThan($cuotadetalle->det_cuota_fin);
+               
+                if ($estado){
+                    $cuotadetalle->det_cuota_estado = false;
+                    $cuotadetalle->save();
+                }
+            }
+            
+        }
+        
         $clientes = Cliente::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');
         return view('clientes.index',compact('persona'))->with('clientes',$clientes);
@@ -69,9 +89,21 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
+        $user = User::find(Auth::user()->id);
         $cliente = Cliente::find($id);
+        $user->user_ayuda = $cliente->id;
+        $user->save();
+        $actividades = Actividade::where('users_id',Auth::user()->id)
+                                    ->get();
+        $persona = Persona::with('persona');
+        $cuotadetalles = DetalleCuota::where('cli_id',$id)
+                                        ->orderBy('det_cuota_fin','DESC')
+                                        ->get();
+       
+       
+        return view('clientes.show',compact('cuotadetalles','actividades','persona'))
+                ->with('cliente',$cliente);
 
-        return view('clientes.show')->with('cliente',$cliente);
     
     }
 

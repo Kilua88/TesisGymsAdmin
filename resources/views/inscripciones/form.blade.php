@@ -4,10 +4,18 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nombre:</strong>
-                <label value="{{$cliente->cli_nombre}}"></label>
+                <label value="{{$cliente->persona->pers_nombre}}">{{$cliente->persona->pers_nombre}}</label>
            </div>
         </div>
        
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Apellido:</strong>
+                <label value="{{$cliente->persona->pers_nombre}}">{{$cliente->persona->pers_apellido}}</label>
+           </div>
+        </div>
+
         <div class="form-group ">
             <label class="col-sm-2 col-form-label">Actividad  </label>
             <div class="col-sm-12">

@@ -7,9 +7,7 @@
         <div class="pull-left">
             <h2 align="center"> Cuotas  </h2>
         </div>
-        <div class="pull-right">
-            <a class="btn  btn-success" href ="{{ route('instructores.create') }}"> Nuevo </a>
-        </div>
+        
     </div>
 </div>
 <br>
