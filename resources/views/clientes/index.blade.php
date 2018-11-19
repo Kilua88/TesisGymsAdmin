@@ -3,6 +3,7 @@
 @extends('home')
 @section('content')
 <div class="row">
+<label for="buscador">Buscar:</label> <input type="text" id="buscador" value="Busque un cliente"/>
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
 <h2 align="center">Clientes</h2>

@@ -29,7 +29,6 @@ class ClienteController extends Controller
         $cuotadetalles = DetalleCuota::where('users_id',Auth::user()->id)->orderBy('det_cuota_fin','DESC')->get();
        
        
-        if (!empty($cuotadetalles)){
             foreach( $cuotadetalles as $cuotadetalle){
 
                 if($cuotadetalle->det_cuota_estado){
@@ -42,30 +41,25 @@ class ClienteController extends Controller
                 }
                 
             }
-        }
+        
 
             foreach ($clientes as $cliente){        
                 
                     $cuotadetalles = DetalleCuota::where('cli_id',$cliente->id)
                                                 ->orderBy('det_cuota_fin','DESC')
                                                 ->get();
-                    if (!empty($cuotadetalles)){
-                        $max = 0;
+                    
+                          $cliente->cli_activo = false;
                         
                         foreach($cuotadetalles as $cuotadetalle){
-                            var_dump($max);
-                            if($max  == 0){
+                            
                                 if($cuotadetalle->det_cuota_estado){
                                     $cliente->cli_activo = true;
                                 }else{
                                     $cliente->cli_activo = false;        
                                 }
-                            }
-                            $max = $max + 1;
                         }
-                    }else{                       
-                            $cliente->cli_activo = false;
-                    }  
+                    
                     $cliente->save();
                     
             }
