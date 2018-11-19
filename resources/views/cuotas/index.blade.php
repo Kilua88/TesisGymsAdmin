@@ -3,6 +3,9 @@
 @extends('home')
 @section('content')
 <div class="row">
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca">
+
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2 align="center"> Cuotas  </h2>
@@ -16,7 +19,7 @@
         <p>{{ $message }}</p>
     </div>
 @endif
-<table class="table table-bordered">
+<table id="myTable" class="table table-bordered">
     <tr>
         <th>Cuota Pagada</th>
         <th>Actividad Pagada </th>

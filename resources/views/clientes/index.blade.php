@@ -3,7 +3,9 @@
 @extends('home')
 @section('content')
 <div class="row">
-<label for="buscador">Buscar:</label> <input type="text" id="buscador" value="Busque un cliente"/>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca">
+
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
 <h2 align="center">Clientes</h2>
@@ -19,7 +21,7 @@
 <p>{{ $message }}</p>
 </div>
 @endif
-<table class="table table-bordered">
+<table id="myTable" class="table table-bordered">
 <tr>
 <th>Nro</th>
 <th>DNI</th>
