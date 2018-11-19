@@ -49,7 +49,7 @@
 
             <td>
                 <a class="btn btn-info btn-sm" href="{{ route('cuotas.show',$cuotadetalle->id)}}">Ver</a>
-                {!! Form::open(['method' => 'DELETE','route' => ['instructores.destroy',$cuotadetalle->id],'style'=>'display:inline']) !!}
+                {!! Form::open(['method' => 'DELETE','route' => ['cuotas.destroy',$cuotadetalle->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
                 {!! Form::close() !!}
 

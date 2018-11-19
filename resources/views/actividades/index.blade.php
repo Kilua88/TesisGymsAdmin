@@ -5,7 +5,7 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2 align="center"> Actividades</h2>
+<h2 align="center"> Membresias o Planes </h2>
 </div>
 <div class="pull-right">
 <a class="btn  btn-success" href ="{{ route('actividades.create') }}"> Nuevo </a>

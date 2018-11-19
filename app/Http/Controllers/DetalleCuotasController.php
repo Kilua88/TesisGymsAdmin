@@ -63,7 +63,7 @@ class DetalleCuotasController extends Controller
         $actividade = Actividade::find($cuotadetalle->act_id);
         $cliente = Cliente::find($cuotadetalle->cli_id);
         $persona = Persona::with('persona');
-
+        
         return view('cuotas.show',compact('cuotadetalle','actividade','persona'))->with('cliente',$cliente);
    
     }
@@ -99,6 +99,9 @@ class DetalleCuotasController extends Controller
      */
     public function destroy($id)
     {
-        //
+      
+        DetalleCuota::find($id)->delete();
+        return redirect()->route('cuotas.index')->with('success','Cuota deleted successfully');
+   
     }
 }

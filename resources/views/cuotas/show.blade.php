@@ -8,7 +8,11 @@
                 </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('cuotas.index') }}">
-                    Volver </a>
+                    Volver a las Cuotas </a>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('clientes.show',$cliente->id) }}">
+                    Volver al Cliente </a>
             </div>
             </div>
         </div>

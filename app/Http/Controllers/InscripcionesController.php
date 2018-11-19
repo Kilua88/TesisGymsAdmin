@@ -27,7 +27,6 @@ class InscripcionesController extends Controller
         $clientes = Cliente::find($id);
         $persona = Persona::with('persona');
         $cuotadetalles = DetalleCuota::where('cli_id',$id)->orderBy('det_cuota_fin','DESC')->get();
-       
 
         return view('cuotas.index',compact('cuotadetalles','actividades','persona'))->with('clientes',$clientes);
    
@@ -46,9 +45,10 @@ class InscripcionesController extends Controller
         $cliente  = Cliente::find($user->user_ayuda);
         $persona = Persona::with('persona');
         $actividades = Actividade::where('users_id',Auth::user()->id)->get();
+        $monedas = Moneda::all();
       
         
-        return view('inscripciones.create',compact('actividades','cliente','persona'));
+        return view('inscripciones.create',compact('actividades','monedas','cliente','persona'));
 
    
     }
@@ -64,6 +64,21 @@ class InscripcionesController extends Controller
        
         $user = User::find(Auth::user()->id);
         $cliente  = Cliente::find($user->user_ayuda);
+
+        $cuotas = DetalleCuota::where('cli_id',$cliente->id)->orderBy('det_cuota_fin','DESC')->get();
+      
+        if (!empty($cuotas)){
+            $max = sizeof($cuotas);
+            for($i=0;$i>$max;$i++){  
+                if($i==0) {
+                    $vence = Carbon::new($cuotas[$i]->det_cuota_fin);
+                }   
+            }
+        }else {
+            $vence = Carbon::now();
+        }
+
+
         $cuotadetalles = new DetalleCuota;
 
         $cuotadetalles->users_id  = Auth::user()->id;
@@ -78,10 +93,12 @@ class InscripcionesController extends Controller
         $cuotadetalles->valor =  $actividad->act_cuota; 
         
         $hoy = Carbon::now();
-        $vence = Carbon::now();
+       
+        
+        $Meses= $request->get('meses');
 
         $cuotadetalles->det_cuota_inicio  = $hoy; 
-        $cuotadetalles->det_cuota_fin  = $vence->subMonth(1); 
+        $cuotadetalles->det_cuota_fin  = $vence->addMonth($Meses); 
         
         $cuotadetalles->save();
         

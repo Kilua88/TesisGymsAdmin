@@ -108,7 +108,7 @@
 <table class="table table-bordered">
     <tr>
         <th>Cuota Pagada</th>
-        <th>Actividad Pagada </th>
+        <th>Membresia O Plan </th>
         <th>Vencimiento</th>
         <th>Estado</th>
         
@@ -116,9 +116,9 @@
     </tr>
    
    
-            @foreach ( $cuotadetalles as $cuotadetalle )
+         
               <tr>
-                    @if($cliente->id == $cuotadetalle->cli_id)
+                    @foreach($cuotadetalles as $cuotadetalle)
                         <td>{{ $cuotadetalle->det_cuota_inicio }}</td>
                        
                         @foreach ( $actividades as $actividade )
@@ -128,20 +128,18 @@
                         @endforeach
 
                         <td>{{ $cuotadetalle->det_cuota_fin }}</td>
-                    
-                    @endif
-          
+        
                    
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Status:</strong>
-                        @if($cuotadetalle->det_cuota_estado)
-                            <td><a class="btn-sm  btn-success" disabled="disabled" >ACTIVO</a></td>
-                         @else
-                            <td> <a class="btn-sm btn-danger" disabled="disabled" >INACTIVO</a></td>
-                        @endif    
-                    </div>
-            </div>
+                        <div class="form-group">
+                            <strong>Status:</strong>
+                            @if($cuotadetalle->det_cuota_estado)
+                                <td><a class="btn-sm  btn-success" disabled="disabled" >ACTIVO</a></td>
+                            @else
+                                <td> <a class="btn-sm btn-danger" disabled="disabled" >INACTIVO</a></td>
+                            @endif    
+                        </div>
+                     </div>
            
             <td>
                 <a class="btn btn-info btn-sm" href="{{ route('cuotas.show',$cuotadetalle->id)}}">Ver</a>
@@ -150,8 +148,10 @@
                 {!! Form::close() !!}
 
             </td>
+            @endforeach
+           
         </tr>
-    @endforeach
+  
 </table>
 
 
