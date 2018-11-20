@@ -7,7 +7,7 @@
 
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2 align="center"> Membresias o Planes </h2>
+<h2  align="center" > Actividades o Planes </h2>
 </div>
 <div class="pull-right">
 <a class="btn  btn-success" href ="{{ route('actividades.create') }}"> Nuevo </a>
@@ -22,11 +22,11 @@
 @endif
 <table id="myTable" class="table table-bordered">
 <tr>
-<th>Nombre</th>
-<th>Moneda</th>
-<th>Cuota</th>
+<th class="bg-primary   text-white">Nombre</th>
+<th class="bg-primary   text-white"> Moneda</th>
+<th class="bg-primary   text-white">Cuota</th>
 
-<th width="280px">Acciones</th>
+<th class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
 @foreach ($actividades as $actividad)
 <tr>

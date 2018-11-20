@@ -67,8 +67,9 @@ class InscripcionesController extends Controller
 
         $cuotas = DetalleCuota::where('cli_id',$cliente->id)->orderBy('det_cuota_fin','DESC')->get();
       
-        if ($cuotas->isNotEmpty()){        
-            $vence = Carbon::new($cuotas[$i]->det_cuota_fin);
+        if ($cuotas->isNotEmpty()){ 
+            $max = 0;       
+            $vence = Carbon::create($cuotas[$max]->det_cuota_fin);
         }else {
             $vence = Carbon::now();
         }

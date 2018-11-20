@@ -22,11 +22,11 @@
 @endif
 <table id="myTable" class="table table-bordered">
     <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>DNI</th>
+        <th class="bg-primary   text-white">Nombre</th>
+        <th class="bg-primary   text-white">Apellido</th>
+        <th class="bg-primary   text-white">DNI</th>
 
-        <th width="280px">Acciones</th>
+        <th class="bg-primary   text-white" width="280px">Acciones</th>
     </tr>
     @foreach ($instructores as $instructor)
         <tr>

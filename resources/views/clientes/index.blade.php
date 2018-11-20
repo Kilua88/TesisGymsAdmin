@@ -23,19 +23,19 @@
 @endif
 <table id="myTable" class="table table-bordered">
 <tr>
-<th>Nro</th>
-<th>DNI</th>
-<th>Nombre</th>
-<th>Apellido</th>
-<th>Direccion</th>
-<th>Telefono</th>
-<th>Email</th>
-<th>Contacto Nombre</th>
-<th>Contacto Apellido</th>
-<th>Contacto Telefono</th>
-<th>Status</th>
+<th class="bg-primary   text-white">Nro</th>
+<th class="bg-primary   text-white">DNI</th>
+<th class="bg-primary   text-white">Nombre</th>
+<th class="bg-primary   text-white">Apellido</th>
+<th class="bg-primary   text-white">Direccion</th>
+<th class="bg-primary   text-white"> Telefono</th>
+<th class="bg-primary   text-white">Email</th>
+<th class="bg-primary   text-white">Contacto Nombre</th>
+<th class="bg-primary   text-white">Contacto Apellido</th>
+<th class="bg-primary   text-white">Contacto Telefono</th>
+<th class="bg-primary   text-white">Status</th>
 
-<th width="280px">Acciones</th>
+<th  class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
 @foreach ($clientes as $cliente)
 <tr>

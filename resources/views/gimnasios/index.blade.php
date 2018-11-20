@@ -26,13 +26,13 @@
 <th>Nombre</th>
 <th>Email</th>
 
-<th width="280px">Acciones</th>
+<th class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
 @foreach ($gimnasios as $gimnasio)
 <tr>
-<td>{{ $gimnasio->id }}</td>
-<td>{{ $gimnasio->name}}</td>
-<td>{{ $gimnasio->email}}</td>
+<th class="bg-primary   text-white">{{ $gimnasio->id }}</td>
+<th class="bg-primary   text-white">{{ $gimnasio->name}}</td>
+<th class="bg-primary   text-white">{{ $gimnasio->email}}</td>
 
 
 <td>

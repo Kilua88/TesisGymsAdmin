@@ -21,14 +21,14 @@
 @endif
 <table id="myTable" class="table table-bordered">
     <tr>
-        <th>Cuota Pagada</th>
-        <th>Actividad Pagada </th>
-        <th>Moneda</th>
-        <th>Valor</th>
-        <th>Cliente Nombre</th>
-        <th>Cliente Apellido</th>
+    <th class="bg-primary   text-white">Cuota Pagada</th>
+    <th class="bg-primary   text-white">Actividad Pagada </th>
+    <th class="bg-primary   text-white">Moneda</th>
+    <th class="bg-primary   text-white">Valor</th>
+    <th class="bg-primary   text-white">Cliente Nombre</th>
+    <th class="bg-primary   text-white">Cliente Apellido</th>
 
-        <th width="280px">Acciones</th>
+        <th class="bg-primary   text-white" width="280px">Acciones</th>
     </tr>
     @foreach ( $cuotadetalles as $cuotadetalle )
         <tr>

@@ -50,14 +50,16 @@ class ClienteController extends Controller
                                                 ->get();
                     
                           $cliente->cli_activo = false;
-                        
+                        $max = 0;
                         foreach($cuotadetalles as $cuotadetalle){
-                            
+                            if($max == 0){
                                 if($cuotadetalle->det_cuota_estado){
                                     $cliente->cli_activo = true;
                                 }else{
                                     $cliente->cli_activo = false;        
                                 }
+                            }
+                            $max++;
                         }
                     
                     $cliente->save();

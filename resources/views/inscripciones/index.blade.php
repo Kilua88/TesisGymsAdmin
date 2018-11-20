@@ -22,12 +22,12 @@
 @endif
 <table id="myTable" class="table table-bordered">
 <tr>
-<th>Nro</th>
-<th>Nombre</th>
-<th>Moneda</th>
-<th>Cuota</th>
+<th class="bg-primary   text-white">Nro</th>
+<th class="bg-primary   text-white">Nombre</th>
+<th class="bg-primary   text-white">Moneda</th>
+<th class="bg-primary   text-white">Cuota</th>
 
-<th width="280px">Acciones</th>
+<th class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
 @foreach ($actividades as $actividad)
 <tr>

@@ -1,9 +1,9 @@
 
 @if( Auth::check()  )
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary  text-white " >
 			
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+		<div class="collapse navbar-collapse text-white" aria-labelledby="navbarDropdown"  id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto text-white " >
 				@foreach ($menus as $key => $item)
 					@if ($item['padre'] != 0)
 						@break

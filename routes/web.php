@@ -16,6 +16,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::domain('{account}.myapp.com')->group(function () {
+    Route::get('user/{id}', function ($account, $id) {
+        return view('/');
+    });
+});
+
 Auth::routes();
 Route::get('storage/{archivo}', function ($archivo) {
     $files = Storage::allFiles(Auth::user()->id);

@@ -22,12 +22,12 @@
 <div class="container-fluid">
 <table id="myTable" class="table table-bordered">
     <tr>
-        <th>URL</th>
-        <th>Titulo</th>
-        <th>Descripcion</th>
-        <th>Imagen</th>
+        <th class="bg-primary   text-white">URL</th>
+        <th class="bg-primary   text-white">Titulo</th>
+        <th class="bg-primary   text-white">Descripcion</th>
+        <th class="bg-primary   text-white">Imagen</th>
 
-        <th width="280px">Acciones</th>
+        <th class="bg-primary   text-white" width="280px">Acciones</th>
     </tr>
     @foreach ($imagenes as $imagene)
         <tr>

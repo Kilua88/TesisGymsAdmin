@@ -18,14 +18,14 @@
 <table class="table table-bordered">
 <tr>
 
-<th>Nombre de Usuario</th>
-<th>Email</th>
-<th>Nombre del Gimnasio</th>
-<th>Direccion del Gimnasio</th>
-<th>Telefono del Gimnasio</th>
-<th>Url Personalizada</th>
+<th class="bg-primary   text-white">Nombre de Usuario</th>
+<th class="bg-primary   text-white">Email</th>
+<th class="bg-primary   text-white">Nombre del Gimnasio</th>
+<th class="bg-primary   text-white">Direccion del Gimnasio</th>
+<th class="bg-primary   text-white">Telefono del Gimnasio</th>
+<th class="bg-primary   text-white">Url Personalizada</th>
 
-<th width="280px">Acciones</th>
+<th class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
 
 <tr>
