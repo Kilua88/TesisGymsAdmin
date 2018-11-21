@@ -9,6 +9,18 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
  
+        <style>
+            .bg-item {
+                background-color: #273746;
+            }
+            .bg-sub-item {
+                color: #ecf0f1;
+            }
+            .bg-sub-item:hover {
+                background-color: #5dade2;
+                color: black;
+            }
+        </style>
         <!-- Enlace a archivo bootstrap -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
@@ -45,10 +57,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item" >
+                            <li class="nav-item " >
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
@@ -58,10 +70,10 @@
                                 <a id="navbarDropdown " class="nav-link dropdown-toggle text-white"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right bg-primary  text-white" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item text-white" href="perfiles">Perfil
+                                <div class="dropdown-menu dropdown-menu-right bg-primary  texty-white bg-item" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-white bg-sub-item" href="perfiles">Perfil
                                     </a>
-                                    <a class="dropdown-item text-white" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-white bg-sub-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
