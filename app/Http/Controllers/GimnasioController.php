@@ -50,6 +50,7 @@ class GimnasioController extends Controller
             'nombre' => 'required',
             'email' => 'required',
             ]);
+            
             User::create($request->all());
             return redirect()->route('gimnasios.index')->with('success','Gimnasio created successfully');
     }

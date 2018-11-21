@@ -78,6 +78,13 @@ class ImagenController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            
+            'titulos' => 'required|max:20',
+            'descripcion' => 'required|max:50',
+            
+        ]);
+
         $imagene = Image_Sliders::find($id);
         $imagene->titulos = $request->input('titulos');
         $imagene->descripcion = $request->input('descripcion');

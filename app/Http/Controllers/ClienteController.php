@@ -113,7 +113,23 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
        
-            
+        $rules = [
+            'pers_nombre' => 'required|max:20',
+            'pers_apellido' => 'required|max:20',
+            'pers_direccion' => 'required|max:20',
+            'pers_telefono' => 'required|numeric|min:100000',
+            'pers_email' => 'required|email',
+            'act_nombre' => 'required|max:20',
+            'pers_dni' => 'required|numeric|min:100000',
+            'cli_contact_nombre' => 'required|max:20',
+            'cli_contact_apellido' => 'required|max:20',
+            'cli_contact_telefono' => 'required|numeric|min:100000',
+        ];
+
+
+
+        $this->validate($request, $rules);
+
             $persona = new Persona;
                     $persona->pers_dni = $request->input('pers_dni'); 
                     $persona->pers_nombre = $request->input('pers_nombre'); 
@@ -208,7 +224,22 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        request()->validate([
+            'pers_nombre' => 'required|max:20',
+            'pers_apellido' => 'required|max:20',
+            'pers_direccion' => 'required|max:20',
+            'pers_telefono' => 'required|numeric|min:100000',
+            'pers_email' => 'required|email',
+            'act_nombre' => 'required|max:20',
+            'pers_dni' => 'required|numeric|min:100000',
+            'cli_contact_nombre' => 'required|max:20',
+            'cli_contact_apellido' => 'required|max:20',
+            'cli_contact_telefono' => 'required|numeric|min:100000',
+        ]);
+
+
+
+        
             $cliente = Cliente::find($id);
             $persona = Persona::find($cliente->pers_id);
                     $persona->pers_dni = $request->input('pers_dni'); 

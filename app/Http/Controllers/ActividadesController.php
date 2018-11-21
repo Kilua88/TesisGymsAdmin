@@ -44,6 +44,14 @@ class ActividadesController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'act_nombre' => 'required|max:20',
+            'act_cuota' => 'required|numeric|min:2|max:100000',
+            'moneda' => 'required|max:20',
+        ];
+     
+        $this->validate($request, $rules);
+
         $actividad = new Actividade; 
         $actividad->users_id = Auth::user()->id;
         $actividad->act_nombre = $request->input('act_nombre');
@@ -93,9 +101,18 @@ class ActividadesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'act_nombre' => 'required|max:20',
+            'act_cuota' => 'required|numeric|min:2|max:100000',
+            'moneda' => 'required|max:20',
+        ]);
+        
         $actividad = Actividade::find($id);
         $actividad->act_nombre = $request->input('act_nombre');
-        $actividad->monedas_id = $request->get('moneda');
+        if ($request->get('moneda') != ''){
+       
+            $actividad->monedas_id = $request->get('moneda');
+        }
         $actividad->act_cuota = $request->input('act_cuota');
         $actividad->save();
 
