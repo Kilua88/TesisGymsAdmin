@@ -36,7 +36,7 @@
 
          <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-            <strong>Apellido:</strong>
+            <strong>Meses a Pagar:</strong>
             {!! Form::text('meses', null, array('placeholder' => 'Meses a Pagar','class' => 'form-control')) !!}
             </div>
         </div>

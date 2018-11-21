@@ -21,7 +21,7 @@ class DetalleCuotasController extends Controller
     public function index()
     {
         
-        $cuotadetalles = DetalleCuota::where('users_id',Auth::user()->id)->orderBy('det_cuota_inicio','DESC')->get();
+        $cuotadetalles = DetalleCuota::where('users_id',Auth::user()->id)->orderBy('det_cuota_inicio','DESC')->paginate(5);
         $actividades = Actividade::where('users_id',Auth::user()->id)->get();
         $clientes = Cliente::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');

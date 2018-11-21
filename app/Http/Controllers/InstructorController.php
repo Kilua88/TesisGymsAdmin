@@ -18,7 +18,7 @@ class InstructorController extends Controller
     public function index()
     {
        
-        $instructores = Instructore::where('users_id',Auth::user()->id)->get();
+        $instructores = Instructore::where('users_id',Auth::user()->id)->paginate(5);
         $persona = Persona::with('persona');
         return view('instructores.index',compact('persona'))->with('instructores',$instructores);
       }

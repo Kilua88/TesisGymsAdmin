@@ -21,7 +21,7 @@ class GimnasioController extends Controller
      */
     public function index()
     {
-        $gimnasios = User::all();
+        $gimnasios =  \DB::table('users')->paginate(5);
       return view('gimnasios.index',compact('gimnasios'))->with('i', (request()->input('page', 1) - 1) * 5);
      
     }

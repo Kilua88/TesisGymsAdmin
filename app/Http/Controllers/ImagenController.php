@@ -17,7 +17,7 @@ class ImagenController extends Controller
      */
     public function index()
     {
-        $imagenes = Image_Sliders::where('users_id',Auth::user()->id)->get();
+        $imagenes = Image_Sliders::where('users_id',Auth::user()->id)->paginate(5);
         
         return view('imagenes.index')->with('imagenes',$imagenes);
   

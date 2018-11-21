@@ -23,4 +23,8 @@ class Actividade extends Model
         public function moneda(){
             return $this->belongsTo('App\Moneda','moneda_id');
         }
+
+        public function inscripciones(){
+            return $this->belongsTo('App\Inscripcione');
+        }
 }

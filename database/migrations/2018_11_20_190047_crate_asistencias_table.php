@@ -15,6 +15,9 @@ class CrateAsistenciasTable extends Migration
     {
         Schema::create('asistencias', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cli_id')->unsigned();
+            $table->foreign('cli_id')->references('id')->on('clientes');
+            $table->timestamp('asis_fecha');
             $table->timestamps();
         });
     }

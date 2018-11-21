@@ -82,10 +82,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status:</strong>
-                        @if($cliente->cli_activo)
+                        @if($cliente->cli_activo == 'activo')
                             <a class="btn-sm  btn-success" disabled="disabled" >ACTIVO</a>
+                        @elseif($cliente->cli_activo == 'inactivo')
+                            <a class="btn-sm btn-danger" disabled="disabled">INACTIVO</a>
                         @else
-                        <a class="btn-sm btn-danger" disabled="disabled" >INACTIVO</a>
+                            <a class="btn-sm btn-warning" disabled="disabled">ACTIVO</a>   
                         @endif    
                     </div>
             </div>
@@ -99,5 +101,63 @@
 
         </div>
         </div>
+<br><br>
+        <div class="container">
+             
+
+        <div class="row">
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca">
+        <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+        
+        <h2 align="center"> Inscripto</h2>
+        </div>
+        
+        </div>
+        </div>
+        <br>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+        <p>{{ $message }}</p>
+        </div>
+        @endif
+        <table id="myTable" class="table table-bordered">
+        <tr>
+        <th class="bg-primary   text-white">Actividad </th>
+        <th class="bg-primary   text-white">Finaliza</th>
+        <th class="bg-primary   text-white">Estado</th>
+
+        <th class="bg-primary   text-white" width="280px">Acciones</th>
+        </tr>
+        
+        @foreach ($inscripciones as $inscripcion)
+        <tr>
+                @foreach ($actividades as $actividad)
+                    @if ($actividad->id == $inscripcion->act_id)
+                        <td>{{ $actividad->act_nombre}}</td>
+                    @endif
+                @endforeach
+                <td>{{ $inscripcion->insc_finaliza}}</td>
+
+                <td>
+                 @if($inscripcion->insc_estado)
+                            <a class="btn-sm  btn-success" disabled="disabled" >ACTIVO</a>
+                        @else
+                            <a class="btn-sm btn-danger" disabled="disabled">INACTIVO</a>
+                @endif  
+                </td>
+        <td>
+        {!! Form::open(['method' => 'DELETE','route' => ['inscripciones.destroy',$inscripcion->id],'style'=>'display:inline']) !!}
+        {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
+        {!! Form::close() !!}
+
+        </td>
+        </tr>
+        @endforeach
+        </table>
+
+
+                </div>
 @endsection
    

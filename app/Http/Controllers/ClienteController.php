@@ -9,6 +9,7 @@ use App\User;
 use App\Actividade;
 use App\Moneda;
 use App\DetalleCuota;
+use App\Inscripcione;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -23,48 +24,73 @@ class ClienteController extends Controller
     {
 
         $hoy = Carbon::now();
-        $clientes = Cliente::where('users_id',Auth::user()->id)->get();
+        $clientes = Cliente::where('users_id',Auth::user()->id)->paginate(5);
         $actividades = Actividade::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');
-        $cuotadetalles = DetalleCuota::where('users_id',Auth::user()->id)->orderBy('det_cuota_fin','DESC')->get();
-       
-       
-            foreach( $cuotadetalles as $cuotadetalle){
+        
+        
+        // para cada cliente
+        foreach ($clientes as $cliente){
 
-                if($cuotadetalle->det_cuota_estado){
-                    $estado = $hoy->greaterThan($cuotadetalle->det_cuota_fin);
-                
-                    if ($estado){
-                        $cuotadetalle->det_cuota_estado = false;
-                        $cuotadetalle->save();
-                    }
-                }
-                
-            }
+                $inscripciones = Inscripcione::where('cli_id',$cliente->id)->get();
         
 
-            foreach ($clientes as $cliente){        
-                
-                    $cuotadetalles = DetalleCuota::where('cli_id',$cliente->id)
-                                                ->orderBy('det_cuota_fin','DESC')
-                                                ->get();
-                    
-                          $cliente->cli_activo = false;
-                        $max = 0;
-                        foreach($cuotadetalles as $cuotadetalle){
-                            if($max == 0){
-                                if($cuotadetalle->det_cuota_estado){
-                                    $cliente->cli_activo = true;
-                                }else{
-                                    $cliente->cli_activo = false;        
-                                }
-                            }
-                            $max++;
+                foreach( $inscripciones as $inscripcion){
+
+                    if($inscripcion->insc_alta){
+                        $estado = $hoy->greaterThan($inscripcion->insc_finaliza);
+                        if ($estado){
+                            $inscripcion->insc_estado = false;
+                            $inscripcion->save();
+                        }else{
+                            $inscripcion->insc_estado = true;
+                            $inscripcion->save();
                         }
+                    }
                     
-                    $cliente->save();
+                }      
+        
+        
+        }
+       
+            
+        
+        foreach ($clientes as $cliente){            
+                
+                $inscripciones = Inscripcione::where('cli_id',$cliente->id)->where('insc_alta',true)->get();
+                
+                if ($inscripciones->isNotEmpty()) {
+                    
+                    $cantidad = $inscripciones->count();
+                
+                        $count=0;
+                        foreach( $inscripciones as $inscripcion){
+                                if ($inscripcion->insc_estado){
+                                    $count++;
+                                }
+                        }
+                       
+                        if($count == 0){
+                            $cliente->cli_activo = 'inactivo';
+                        }else {                            
+                            if($cantidad == $count){
+                                $cliente->cli_activo = 'activo';
+                            }else {
+                                $cliente->cli_activo = 'warning';
+                            }
+                        }    
+                            
+                         
+                        
+                }else {
+
+                    $cliente->cli_activo = 'inactivo';
+                }
+                $cliente->save();
                     
             }
+
+            
         return view('clientes.index',compact('persona'))->with('clientes',$clientes);
     }
 
@@ -115,6 +141,8 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
+
+
         $user = User::find(Auth::user()->id);
         $cliente = Cliente::find($id);
         $user->user_ayuda = $cliente->id;
@@ -122,13 +150,38 @@ class ClienteController extends Controller
         $actividades = Actividade::where('users_id',Auth::user()->id)
                                     ->get();
         $persona = Persona::with('persona');
-        $cuotadetalles = DetalleCuota::where('cli_id',$cliente->id)
-                                        ->orderBy('det_cuota_fin','DESC')
-                                        ->get();
-      
-            
+         
+        $inscripciones = Inscripcione::where('cli_id',$cliente->id)->where('insc_alta',true)->get();
+         
+        if ($inscripciones->isNotEmpty()) {
+                    
+            $cantidad = $inscripciones->count();
         
-        return view('clientes.show',compact('cuotadetalles','actividades','persona'))
+                $count=0;
+                foreach( $inscripciones as $inscripcion){
+                        if ($inscripcion->insc_estado){
+                            $count++;
+                        }
+                }
+                if($count == 0){
+                    $cliente->cli_activo = 'inactivo';
+                }else {                            
+                    if($cantidad == $count){
+                        $cliente->cli_activo = 'activo';
+                    }else {
+                        $cliente->cli_activo = 'warning';
+                    }
+                }    
+                    
+                 
+                
+        }else {
+
+            $cliente->cli_activo = 'inactivo';
+        }
+        $cliente->save();
+        
+        return view('clientes.show',compact('inscripciones','actividades','persona'))
                 ->with('cliente',$cliente);
 
     

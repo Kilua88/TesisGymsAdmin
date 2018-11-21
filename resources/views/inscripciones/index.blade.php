@@ -15,6 +15,9 @@
 </div>
 </div>
 <br>
+
+{!! $actividades->links() !!}
+<br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -24,7 +27,6 @@
 <tr>
 <th class="bg-primary   text-white">Nro</th>
 <th class="bg-primary   text-white">Nombre</th>
-<th class="bg-primary   text-white">Moneda</th>
 <th class="bg-primary   text-white">Cuota</th>
 
 <th class="bg-primary   text-white" width="280px">Acciones</th>
@@ -33,11 +35,7 @@
 <tr>
 <td>{{ $actividad->id }}</td>
 <td>{{ $actividad->act_nombre}}</td>
-        @foreach ($monedas as $moneda)
-            @if($moneda->id == $actividad->monedas_id)
-                <td>{{ $moneda->tipo_moneda}}</td>
-            @endif
-        @endforeach
+       
 <td>{{ $actividad->act_cuota}}</td>
 
 <td>

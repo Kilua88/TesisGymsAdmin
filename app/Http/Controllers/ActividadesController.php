@@ -18,7 +18,7 @@ class ActividadesController extends Controller
     public function index()
     {
         
-        $actividades = Actividade::where('users_id',Auth::user()->id)->get();
+        $actividades = Actividade::where('users_id',Auth::user()->id)->paginate(5);
         $monedas = Moneda::all();
         return view('actividades.index',compact('monedas'))->with('actividades',$actividades);
   

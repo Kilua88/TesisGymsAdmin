@@ -16,7 +16,7 @@ class SeederTablaMenus extends Seeder
     	/*----- ADMINISTRADOR ----*/
 
         //Padres de Raiz	
-		$m1 = factory(Menu::class)->create([
+		$m11 = factory(Menu::class)->create([
 			'etiqueta' => 'Home',
 			'pagina' => 'home',
 			'padre' => 0,
@@ -24,10 +24,83 @@ class SeederTablaMenus extends Seeder
 			'rol' => 1,
 		]);
 		
-		$m2 = factory(Menu::class)->create([
+		$m12 = factory(Menu::class)->create([
 			'etiqueta' => 'Gimnasios',
 			'pagina' => 'gimnasios',
 			'padre' => 0,
+			'orden' => 1,
+			'rol' => 1,
+		]);
+
+		$m1 = factory(Menu::class)->create([
+			'etiqueta' => 'Home',
+			'pagina' => 'home',
+			'padre' => 0,
+			'orden' => 2,
+			'rol' => 1,
+		]);
+		
+		$m2 = factory(Menu::class)->create([
+			'etiqueta' => 'Actividades',
+			'pagina' => 'actividades',
+			'padre' => 0,
+			'orden' => 3,
+			'rol' => 1,
+		]);
+
+		$m3 = factory(Menu::class)->create([
+			'etiqueta' => 'Instructores',
+			'pagina' => 'instructores',
+			'padre' => 0,
+			'orden' => 4,
+			'rol' => 1,
+		]);
+		
+		
+			
+		$m4 = factory(Menu::class)->create([
+			'etiqueta' => 'Clientes',
+			'pagina' => 'clientes',
+			'padre' => 0,
+			'orden' => 5,
+			'rol' => 1,
+		]);
+
+
+		$m5 = factory(Menu::class)->create([
+			'etiqueta' => 'Horarios',
+			'pagina' => 'horarios',
+			'padre' => 0,
+			'orden' => 6,
+			'rol' => 1,
+		]);
+		
+		$m6 = factory(Menu::class)->create([
+			'etiqueta' => 'Mis Archivos',
+			'pagina' => 'archivos',
+			'padre' => 0,
+			'orden' => 7,
+			'rol' => 1,
+		]);
+
+		$m7 = factory(Menu::class)->create([
+			'etiqueta' => 'Cuotas',
+			'pagina' => 'cuotas',
+			'padre' => 0,
+			'orden' => 8,
+			'rol' => 1,
+		]);
+		factory(Menu::class)->create([
+			'etiqueta' => 'Mis Imagenes',
+			'pagina' => 'imagenes',
+			'padre' => $m6->id,
+			'orden' => 0,
+			'rol' => 1,
+		]);
+		factory(Menu::class)->create([
+			'etiqueta' => 'Mis Promociones',
+			'pagina' => 'promociones',
+			'padre' => $m6->id,
 			'orden' => 1,
 			'rol' => 1,
 		]);

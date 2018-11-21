@@ -16,6 +16,9 @@
 </div>
 </div>
 <br>
+
+{!! $clientes->links() !!}
+<br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -49,10 +52,13 @@
 <td>{{ $cliente->cli_contact_nombre}}</td>
 <td>{{ $cliente->cli_contact_apellido}}</td>
 <td>{{ $cliente->cli_contact_telefono}}</td>
-<td> @if($cliente->cli_activo)
+<td> @if($cliente->cli_activo == 'activo')
             <a class="btn-sm  btn-success" disabled="disabled" >ACTIVO</a>
-     @else
+       @elseif($cliente->cli_activo == 'inactivo')
             <a class="btn-sm btn-danger" disabled="disabled">INACTIVO</a>
+       @else
+           <a class="btn-sm btn-warning" disabled="disabled">ACTIVO</a>   
+      
     @endif 
 </td>
 

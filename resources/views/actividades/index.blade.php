@@ -15,6 +15,9 @@
 </div>
 </div>
 <br>
+
+{!! $actividades->links() !!}
+<br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -49,6 +52,5 @@
 </tr>
 @endforeach
 </table>
-
 @endsection
   

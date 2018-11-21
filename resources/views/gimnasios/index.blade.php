@@ -15,6 +15,9 @@
 </div>
 </div>
 <br>
+
+{!! $gimnasios->links() !!}
+<br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
@@ -22,17 +25,17 @@
 @endif
 <table id="myTable" class="table table-bordered">
 <tr>
-<th>Nro</th>
-<th>Nombre</th>
-<th>Email</th>
+<th class="bg-primary   text-white" >Nro</th>
+<th class="bg-primary   text-white" >Nombre</th>
+<th class="bg-primary   text-white" >Email</th>
 
 <th class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
 @foreach ($gimnasios as $gimnasio)
 <tr>
-<th class="bg-primary   text-white">{{ $gimnasio->id }}</td>
-<th class="bg-primary   text-white">{{ $gimnasio->name}}</td>
-<th class="bg-primary   text-white">{{ $gimnasio->email}}</td>
+<th >{{ $gimnasio->id }}</td>
+<th >{{ $gimnasio->name}}</td>
+<th >{{ $gimnasio->email}}</td>
 
 
 <td>

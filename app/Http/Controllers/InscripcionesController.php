@@ -11,6 +11,7 @@ use App\Persona;
 use App\Cliente;
 use Carbon\Carbon;
 use App\DetalleCuota;
+use App\Inscripcione;
 use Illuminate\Support\Facades\Auth;
 
 class InscripcionesController extends Controller
@@ -23,12 +24,12 @@ class InscripcionesController extends Controller
      */
     public function index($id)
     {
-        $actividades = Actividade::where('users_id',Auth::user()->id)->get();
+        $actividades = Actividade::where('users_id',Auth::user()->id)-->paginate(5);
         $clientes = Cliente::find($id);
         $persona = Persona::with('persona');
-        $cuotadetalles = DetalleCuota::where('cli_id',$id)->orderBy('det_cuota_fin','DESC')->get();
-
-        return view('cuotas.index',compact('cuotadetalles','actividades','persona'))->with('clientes',$clientes);
+        $inscripciones = Inscripcione::where('cli_id',$clientes->id)->where('insc_alta', true)->get();
+        
+        return view('cuotas.index',compact('inscripciones','actividades','persona'))->with('clientes',$clientes);
    
     }
 
@@ -58,43 +59,71 @@ class InscripcionesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *debo ver que la inscripcion no exista y crearla,
+     *si la inscripcion existe debo agrregar a la ultima 
+     *cuota el timepo requeridos
      */
+
+
     public function store(Request $request)
     {
        
         $user = User::find(Auth::user()->id);
         $cliente  = Cliente::find($user->user_ayuda);
+    
+        $inscripciones = Inscripcione::where('cli_id',$cliente->id)->get();
 
-        $cuotas = DetalleCuota::where('cli_id',$cliente->id)->orderBy('det_cuota_fin','DESC')->get();
+        $acti = $request->get('actividad');
       
-        if ($cuotas->isNotEmpty()){ 
-            $max = 0;       
-            $vence = Carbon::create($cuotas[$max]->det_cuota_fin);
-        }else {
-            $vence = Carbon::now();
+        
+        $Meses= $request->get('meses');
+        $band = false;
+        
+        foreach($inscripciones as $inscripcion){
+
+            $actividad = Actividade::find($inscripcion->act_id);
+            if($acti == $actividad->id){
+                $band = true;
+                if($inscripcion->insc_alta){
+                    $vence = Carbon::create($inscripcion->insc_finaliza);
+                    $inscripcion->insc_finaliza = $vence->addMonth($Meses);
+                }else{
+                    $vence = Carbon::now();
+                    $inscripcion->insc_finaliza = $vence->addMonth($Meses);
+                    $inscripcion->insc_alta = true;
+                }
+                $inscripcion->save();
+            }
         }
 
+        if(!$band){
+            $inscripcion = new Inscripcione;
+            $inscripcion->cli_id = $cliente->id;
+            $inscripcion->act_id =$acti;           
+            $vence = Carbon::now();
+            $inscripcion->insc_finaliza = $vence->addMonth($Meses);
+            $inscripcion->insc_alta = true;
+            $inscripcion->save();
+        }
 
+      
+        
         $cuotadetalles = new DetalleCuota;
 
         $cuotadetalles->users_id  = Auth::user()->id;
         $cuotadetalles->cli_id = $cliente->id;
         $cuotadetalles->act_id = $request->get('actividad');
-        
+
         $actividad = Actividade::find($cuotadetalles->act_id);
-      
         $moneda = Moneda::find($actividad->monedas_id);
 
         $cuotadetalles->moneda = $moneda->tipo_moneda; 
-        $cuotadetalles->valor =  $actividad->act_cuota; 
+        $cuotadetalles->valor =  $actividad->act_cuota * $Meses; 
         
         $hoy = Carbon::now();
-       
         
-        $Meses= $request->get('meses');
-
         $cuotadetalles->det_cuota_inicio  = $hoy; 
-        $cuotadetalles->det_cuota_fin  = $vence->addMonth($Meses); 
+       
         
         $cuotadetalles->save();
         
@@ -145,7 +174,9 @@ class InscripcionesController extends Controller
      */
     public function destroy($id)
     {
-        DetalleCuota::find($id)->delete();
+        $inscripcion=Inscripcione::find($id);
+        $inscripcion->insc_alta = false;
+        $inscripcion->save();
         return redirect()->route('clientes.index')->with('success','actividad created successfully');
 
     }
