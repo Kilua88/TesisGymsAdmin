@@ -93,13 +93,21 @@
             </div>
 
            </div>
-           <div class="row">
-             <div class="pull-lefth" >
-        <a class="btn btn-primary" href="{{ route('inscripciones.create') }}">
+           
+             <div class="float-xl-left"  >
+        <a class="btn-lg btn-primary" href="{{ route('inscripciones.create') }}">
         Inscribir </a>
         <input type="hidden" name="id_clientes" value="{{$cliente->id}}">
 
         </div>
+
+
+           
+             <div class="float-xl-right" >
+        <a class="btn-lg btn-success" href="{{ route('asist') }}">
+        Cargar Asistencia </a>
+
+      
         </div>
 <br><br>
         <div class="container">

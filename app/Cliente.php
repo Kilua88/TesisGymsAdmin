@@ -25,6 +25,10 @@ class Cliente extends Model
         return $this->hasMany('App\DetalleCuota','cli_id');
     }
 
+    
+    public function asistencias(){
+        return $this->hasMany('App\Asistencia','cli_id');
+    }
 
     public function inscripciones(){
         return $this->belongsTo('App\Inscripcione');

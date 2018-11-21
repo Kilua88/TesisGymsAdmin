@@ -168,6 +168,20 @@ class SeederTablaMenus extends Seeder
 			'rol' => 2,
 		]);
 		factory(Menu::class)->create([
+			'etiqueta' => 'Mis Clientes',
+			'pagina' => 'clientes',
+			'padre' => $m4->id,
+			'orden' => 0,
+			'rol' => 2,
+		]);
+		factory(Menu::class)->create([
+			'etiqueta' => 'Asistencias',
+			'pagina' => 'asistencias',
+			'padre' => $m4->id,
+			'orden' => 1,
+			'rol' => 2,
+		]);
+		factory(Menu::class)->create([
 			'etiqueta' => 'Mis Imagenes',
 			'pagina' => 'imagenes',
 			'padre' => $m6->id,

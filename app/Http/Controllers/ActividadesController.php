@@ -45,9 +45,9 @@ class ActividadesController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'act_nombre' => 'required|max:20',
+            
             'act_cuota' => 'required|numeric|min:2|max:100000',
-            'moneda' => 'required|max:20',
+            
         ];
      
         $this->validate($request, $rules);
@@ -106,13 +106,10 @@ class ActividadesController extends Controller
             'act_cuota' => 'required|numeric|min:2|max:100000',
             'moneda' => 'required|max:20',
         ]);
-        
+
         $actividad = Actividade::find($id);
         $actividad->act_nombre = $request->input('act_nombre');
-        if ($request->get('moneda') != ''){
-       
-            $actividad->monedas_id = $request->get('moneda');
-        }
+        $actividad->monedas_id = $request->get('moneda');
         $actividad->act_cuota = $request->input('act_cuota');
         $actividad->save();
 

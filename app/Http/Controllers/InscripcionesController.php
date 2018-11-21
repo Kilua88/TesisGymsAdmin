@@ -68,12 +68,6 @@ class InscripcionesController extends Controller
     public function store(Request $request)
     {
        
-        request()->validate([
-            
-            'actividad' => 'required|max:20',
-            'meses' => 'required|numeric|min:100000',
-            
-        ]);
 
 
         $user = User::find(Auth::user()->id);

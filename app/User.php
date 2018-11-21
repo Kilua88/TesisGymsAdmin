@@ -34,6 +34,9 @@ class User extends Authenticatable
     public function clientes(){
         return $this->hasMany('App\Cliente','users_id');
     }
+    public function asistencias(){
+        return $this->hasMany('App\Asistencia','users_id');
+    }
     public function imagenes(){
         return $this->hasMany('App\Image_Sliders','users_id');
     }

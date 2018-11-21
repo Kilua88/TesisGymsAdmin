@@ -85,7 +85,6 @@
     </body>
 
     <script>
-    var URLdomain = window.location.host;
-    alert(URLdomain);
+   
 </script>
 </html>

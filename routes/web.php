@@ -38,11 +38,14 @@ Route::get('storage/{archivo}', function ($archivo) {
 });
 Route::post('storage/create', 'StorageController@save');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('asistencias/guardar', 'AsistenciaController@asist')->name('asist');
 Route::get('formulario', 'StorageController@index');
 Route::resource('gimnasios', 'GimnasioController')->middleware('auth', 'rol:admin');
 Route::resource('actividades', 'ActividadesController');
 Route::resource('imagenes', 'ImagenController');
 Route::resource('cuotas', 'DetalleCuotasController');
+Route::resource('asistencias', 'AsistenciaController');
 Route::resource('inscripciones', 'InscripcionesController');
 Route::resource('clientes', 'ClienteController');
 Route::resource('instructores', 'InstructorController');
