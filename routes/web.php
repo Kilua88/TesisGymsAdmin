@@ -24,7 +24,7 @@ Route::domain('{account}.myapp.com')->group(function () {
 
 Auth::routes();
 Route::post('storage/create', 'StorageController@save');
-Route::post('guardar', 'AlmacenController@save');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
    

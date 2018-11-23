@@ -21,7 +21,7 @@
             </ul>
     </div>
 @endif
-{!! Form::open( ['method' => 'POST', 'route' => ['actividades.store']]) !!}
+{!! Form::open( ['method' => 'POST', 'files' => true,'route' => ['actividades.store']]) !!}
             @include('actividades.form')
 {!! Form::close() !!}
             @endsection

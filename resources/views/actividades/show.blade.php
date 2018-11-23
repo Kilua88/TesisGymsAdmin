@@ -13,7 +13,7 @@
         </div>
         </div>
         <br>
-            <div class="row">
+            <div class="column-left">
             
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -37,5 +37,11 @@
                 </div>
            
         </div>
+
+        <div class="fluid">
+                 <a href="../{{$actividad->act_url}}"  >
+                    <img src="../{{$actividad->act_url}}"  higth= "400px" width="400px" class="rounded mx-auto d-block">
+                </a>
+                </div>
 @endsection
    

@@ -14,10 +14,12 @@
         </div>  
 
             
+            <div class="fluid">
+                 <a href="../../{{$imagene->url}}"  >
+                    <img src="../../{{$imagene->url}}"  higth= "400px" width="400px" class="rounded mx-auto d-block">
+                </a>
+                </div>
         
-        
-
-       
         <div class="form-group row">
 
 </div>

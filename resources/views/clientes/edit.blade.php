@@ -23,7 +23,7 @@ input.<br><br>
 </ul>
 </div>
 @endif
-{!! Form::model($cliente,['method'=> 'PATCH','route'=>['clientes.update', $cliente->id]]) !!}
+{!! Form::model($cliente,['method'=> 'PATCH','files' => true,'route'=>['clientes.update', $cliente->id]]) !!}
 @include('clientes.formedit')
 {!! Form::close() !!}
 

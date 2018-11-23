@@ -28,6 +28,7 @@
         <th class="bg-primary   text-white">Nombre</th>
         <th class="bg-primary   text-white">Apellido</th>
         <th class="bg-primary   text-white">DNI</th>
+        <th class="bg-primary   text-white"> Imagen</th>
 
         <th class="bg-primary   text-white" width="280px">Acciones</th>
     </tr>
@@ -36,6 +37,13 @@
             <td>{{ $instructor->persona->pers_nombre}}</td>
             <td>{{ $instructor->persona->pers_apellido}}</td>
             <td>{{ $instructor->persona->pers_dni}}</td>
+            <td> <div class="col-sm-6 col-md-3">
+                 <a href="{{$instructor->persona->pers_url}}" class="img-fluid img-thumbnail">
+                    <img src="{{$instructor->persona->pers_url}}" alt="..." width="100px" height="100px">
+                </a>
+                </div>
+            </td>
+
 
 
 

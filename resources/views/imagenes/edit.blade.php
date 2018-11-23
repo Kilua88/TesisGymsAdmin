@@ -23,7 +23,7 @@ input.<br><br>
 </ul>
 </div>
 @endif
-{!! Form::model($imagene,['method'=> 'PATCH','route'=>['imagenes.update', $imagene->id]]) !!}
+{!! Form::model($imagene,['method'=> 'PATCH', 'files' => true,'route'=>['imagenes.update', $imagene->id]]) !!}
 @include('imagenes.form')
 {!! Form::close() !!}
 

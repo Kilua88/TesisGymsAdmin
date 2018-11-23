@@ -23,7 +23,7 @@ input.<br><br>
 </ul>
 </div>
 @endif
-{!! Form::model($actividad,['method'=> 'PATCH','route'=>['actividades.update', $actividad->id]]) !!}
+{!! Form::model($actividad,[ 'files'=> true,'method'=> 'PATCH','route'=>['actividades.update', $actividad->id]]) !!}
 @include('actividades.form')
 {!! Form::close() !!}
 

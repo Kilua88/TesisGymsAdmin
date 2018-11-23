@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Actividade;
 use App\User;
 use App\Moneda;
+use Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class ActividadesController extends Controller
 {
@@ -44,23 +47,36 @@ class ActividadesController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            
-            'act_cuota' => 'required|numeric|min:2|max:100000',
-            
-        ];
-     
-        $this->validate($request, $rules);
+        
+
 
         $actividad = new Actividade; 
-        $actividad->users_id = Auth::user()->id;
+        $actividad->users_id = Auth::user()->id; 
         $actividad->act_nombre = $request->input('act_nombre');
         $actividad->monedas_id = $request->get('moneda');
-        
         $actividad->act_cuota = $request->input('act_cuota');
-        $actividad->save();
+        $ruta = public_path();
+
+        // recogida del form
+        $imagenOriginal = $request->file('file');
+        $nombre =  $imagenOriginal->getClientOriginalName();
+
+        // crear instancia de imagen
+       // $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $actividad->act_nombre. '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // guardar imagen
+        // save( [ruta], [calidad])
         
- return redirect()->route('actividades.index')->with('success','Actividad created successfully');
+        $path = Storage::putFileAs(Auth::user()->id,  $imagenOriginal, Auth::user()->id.'_'.$temp_name);
+        
+        $actividad->act_url = 'app/'.$path ;
+        $actividad->save();
+
+        
+        return redirect()->route('actividades.index')->with('success','Actividad created successfully');
 
     }
 
@@ -101,15 +117,27 @@ class ActividadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-            'act_nombre' => 'required|max:20',
-            'act_cuota' => 'required|numeric|min:2|max:100000',
-            'moneda' => 'required|max:20',
-        ]);
-
         $actividad = Actividade::find($id);
+        $ruta = public_path();
+
+        // recogida del form
+        $imagenOriginal = $request->file('file');
+        $nombre =  $imagenOriginal->getClientOriginalName();
+
+        // crear instancia de imagen
+       // $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $actividad->act_nombre. '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        
+        $path = Storage::putFileAs(Auth::user()->id,  $imagenOriginal, Auth::user()->id.'_'.$temp_name);
+        
         $actividad->act_nombre = $request->input('act_nombre');
         $actividad->monedas_id = $request->get('moneda');
+        $actividad->act_url = 'app/'.$path ;
         $actividad->act_cuota = $request->input('act_cuota');
         $actividad->save();
 

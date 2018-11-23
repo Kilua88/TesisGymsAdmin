@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Instructore;
 use App\Persona;
 use App\User;
+use Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class InstructorController extends Controller
 {
@@ -51,11 +54,38 @@ class InstructorController extends Controller
             $persona->pers_direccion = $request->input('pers_direccion');
             $persona->pers_telefono = $request->input('pers_telefono');
             $persona->pers_email = $request->input('pers_email');
-            $persona->save();
-        $instructor = new Instructore;
+            
+        
+              
+
+        $ruta = public_path();
+
+        // recogida del form
+        $imagenOriginal = $request->file('file');
+        $nombre =  $imagenOriginal->getClientOriginalName();
+
+        // crear instancia de imagen
+       // $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $persona->pers_nombre. '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        
+        $path = Storage::putFileAs(Auth::user()->id,  $imagenOriginal, Auth::user()->id.'_'.$temp_name);
+        
+       
+                $persona->pers_url = 'app/'.$path ;
+                 
+        
+                $persona->save();
+
+                $instructor = new Instructore;
                 $instructor->pers_id = $persona->id;     
                 $instructor->users_id = Auth::user()->id;
                 $instructor->save();
+               
         return redirect()->route('instructores.index')->with('success','Instructo created successfully');
 }
 
@@ -94,16 +124,36 @@ class InstructorController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $instructor = Instructore::find($id);
-            $persona = Persona::find($instructor->pers_id);
 
-            $persona->pers_dni = $request->input('pers_dni'); 
-            $persona->pers_nombre = $request->input('pers_nombre'); 
-            $persona->pers_apellido = $request->input('pers_apellido');
-            $persona->pers_direccion = $request->input('pers_direccion');
-            $persona->pers_telefono = $request->input('pers_telefono');
-            $persona->pers_email = $request->input('pers_email');
-          
+        $instructor = Instructore::find($id);
+        $persona = Persona::find($instructor->pers_id);
+
+        $ruta = public_path();
+
+        // recogida del form
+        $imagenOriginal = $request->file('file');
+        $nombre =  $imagenOriginal->getClientOriginalName();
+
+        // crear instancia de imagen
+       // $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $persona->pers_nombre. '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        
+        $path = Storage::putFileAs(Auth::user()->id,  $imagenOriginal, Auth::user()->id.'_'.$temp_name);
+        
+       
+                $persona->pers_url = 'app/'.$path ;
+                $persona->pers_dni = $request->input('pers_dni'); 
+                $persona->pers_nombre = $request->input('pers_nombre'); 
+                $persona->pers_apellido = $request->input('pers_apellido');
+                $persona->pers_direccion = $request->input('pers_direccion');
+                $persona->pers_telefono = $request->input('pers_telefono');
+                $persona->pers_email = $request->input('pers_email');
+            
                 $instructor->pers_id = $persona->id;     
         
                 $instructor->save();

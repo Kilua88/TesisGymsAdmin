@@ -13,7 +13,7 @@
         </div>
         </div>
         <br>
-            <div class="row" >
+            <div class="col" >
             
                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -94,14 +94,19 @@
 
            </div>
            
-             <div class="float-xl-left"  >
+           
+
+        <div class="col">
+                 <a href="../{{$cliente->persona->pers_url}}"  >
+                    <img src="../{{$cliente->persona->pers_url}}"  higth= "400px" width="400px" class="rounded mx-auto d-block">
+                </a>
+                </div>
+                <div class="float-xl-left"  >
         <a class="btn-lg btn-primary" href="{{ route('inscripciones.create') }}">
         Inscribir </a>
         <input type="hidden" name="id_clientes" value="{{$cliente->id}}">
 
         </div>
-
-
            
              <div class="float-xl-right" >
         <a class="btn-lg btn-success" href="{{ route('asist') }}">

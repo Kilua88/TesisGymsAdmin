@@ -10,7 +10,10 @@ use App\Actividade;
 use App\Moneda;
 use App\DetalleCuota;
 use App\Inscripcione;
+use Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class ClienteController extends Controller
@@ -122,15 +125,38 @@ class ClienteController extends Controller
                     $persona->pers_direccion = $request->input('pers_direccion');
                     $persona->pers_telefono = $request->input('pers_telefono');
                     $persona->pers_email = $request->input('pers_email');
-                    $persona->save();
-            $cliente = new Cliente;
-                    $cliente->pers_id = $persona->id;     
-                    $cliente->users_id = Auth::user()->id;
-                    $cliente->cli_contact_nombre = $request->input('cli_contact_nombre');
-                    $cliente->cli_contact_apellido = $request->input('cli_contact_apellido');
-                    $cliente->cli_contact_telefono = $request->input('cli_contact_telefono');
-                    $cliente->save();
-                    
+               
+        $ruta = public_path();
+
+        // recogida del form
+        $imagenOriginal = $request->file('file');
+        $nombre =  $imagenOriginal->getClientOriginalName();
+
+        // crear instancia de imagen
+       // $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $persona->pers_nombre. '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        
+        $path = Storage::putFileAs(Auth::user()->id,  $imagenOriginal, Auth::user()->id.'_'.$temp_name);
+        
+       
+                $persona->pers_url = 'app/'.$path ;
+                $persona->save();
+                $cliente = new Cliente;
+                        $cliente->pers_id = $persona->id;     
+                        $cliente->users_id = Auth::user()->id;
+                        $cliente->cli_contact_nombre = $request->input('cli_contact_nombre');
+                        $cliente->cli_contact_apellido = $request->input('cli_contact_apellido');
+                        $cliente->cli_contact_telefono = $request->input('cli_contact_telefono');
+                        $cliente->save();
+            
+                $cliente->save();
+                $persona->save();
+
              return redirect()->route('clientes.index')->with('success','Cliente created successfully');
     }
 
@@ -227,10 +253,34 @@ class ClienteController extends Controller
                     $cliente->cli_contact_apellido = $request->input('cli_contact_apellido');
                     $cliente->cli_contact_telefono = $request->input('cli_contact_telefono');
                    
-                    $cliente->save();
-                    $persona->save();
+                    
+                    
 
-            return redirect()->route('clientes.index')->with('success','Cliente created successfully');
+
+        $ruta = public_path();
+
+        // recogida del form
+        $imagenOriginal = $request->file('file');
+        $nombre =  $imagenOriginal->getClientOriginalName();
+
+        // crear instancia de imagen
+       // $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $persona->pers_nombre. '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        
+        $path = Storage::putFileAs(Auth::user()->id,  $imagenOriginal, Auth::user()->id.'_'.$temp_name);
+        
+       
+                $persona->pers_url = 'app/'.$path ;
+            
+                $cliente->save();
+                $persona->save();
+            
+        return redirect()->route('clientes.index')->with('success','Cliente created successfully');
     }
 
     /**

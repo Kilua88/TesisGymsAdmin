@@ -28,8 +28,19 @@
             </div>
         </div>
         <div class="form-group row">
+        <form method="POST"  accept-charset="UTF-8" enctype="multipart/form-data">
+            
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
+            <div class="form-group">
+              <label class="col-md-4 control-label">Nuevo Archivo</label>
+              <div class="col-md-6">
+                <input type="file" class="form-control" name="file" >
+              </div>
+            </div>
+          </form>
 
-</div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>
         </div>

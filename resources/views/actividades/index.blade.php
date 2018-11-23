@@ -27,6 +27,7 @@
 <th class="bg-primary   text-white">Nombre</th>
 <th class="bg-primary   text-white"> Moneda</th>
 <th class="bg-primary   text-white">Cuota</th>
+<th class="bg-primary   text-white"> Imagen</th>
 
 <th class="bg-primary   text-white" width="280px">Acciones</th>
 </tr>
@@ -39,6 +40,13 @@
             @endif
         @endforeach
 <td>{{ $actividad->act_cuota}}</td>
+        <td> <div class="col-sm-6 col-md-3">
+                 <a href="{{$actividad->act_url}}" class="img-fluid img-thumbnail">
+                    <img src="{{$actividad->act_url}}" onerror="this.src='URL_de_imagen_alternativa.jpg';" width="100px" height="100px">
+                </a>
+                </div>
+            </td>
+
 
 <td>
 <a class="btn btn-info btn-sm" href="{{ route('actividades.show',$actividad->id)}}">Ver</a>

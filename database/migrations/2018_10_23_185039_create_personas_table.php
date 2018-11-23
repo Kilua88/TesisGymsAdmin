@@ -23,6 +23,7 @@ class CreatePersonasTable extends Migration
             $table->string('pers_email');
             $table->boolean('estado')->default('true');
             $table->boolean('pers_borrado')->default('false');
+            $table->string('pers_url')->nullable();
             $table->timestamps();
         });
     }

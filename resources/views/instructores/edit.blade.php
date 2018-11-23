@@ -23,7 +23,7 @@ input.<br><br>
 </ul>
 </div>
 @endif
-{!! Form::model($instructor,['method'=> 'PATCH','route'=>['instructores.update', $instructor->id]]) !!}
+{!! Form::model($instructor,['method'=> 'PATCH','files' => true,'route'=>['instructores.update', $instructor->id]]) !!}
 @include('instructores.formedit')
 {!! Form::close() !!}
 

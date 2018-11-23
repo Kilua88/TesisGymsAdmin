@@ -55,6 +55,11 @@
                     </div>
             </div>
         </div>
+        <div class="col">
+                 <a href="../{{$instructor->persona->pers_url}}"  >
+                    <img src="../{{$instructor->persona->pers_url}}"  higth= "400px" width="400px"class="rounded mx-auto d-block">
+                </a>
+                </div>
            
         </div>
 @endsection
