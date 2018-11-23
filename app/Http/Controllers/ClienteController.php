@@ -24,7 +24,7 @@ class ClienteController extends Controller
     {
 
         $hoy = Carbon::now();
-        $clientes = Cliente::where('users_id',Auth::user()->id)->paginate(5);
+        $clientes = Cliente::where('users_id',Auth::user()->id)->get();
         $actividades = Actividade::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');
         

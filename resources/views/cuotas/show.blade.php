@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2 align="center"> Instructor </h2>
+                    <h2 align="center"> Cuota </h2>
                 </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('cuotas.index') }}">

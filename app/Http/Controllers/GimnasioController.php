@@ -21,7 +21,7 @@ class GimnasioController extends Controller
      */
     public function index()
     {
-        $gimnasios =  \DB::table('users')->paginate(5);
+        $gimnasios =  \DB::table('users')->get();
       return view('gimnasios.index',compact('gimnasios'))->with('i', (request()->input('page', 1) - 1) * 5);
      
     }
@@ -46,10 +46,6 @@ class GimnasioController extends Controller
     public function store(Request $request)
     {
         //
-        request()->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            ]);
             
             User::create($request->all());
             return redirect()->route('gimnasios.index')->with('success','Gimnasio created successfully');
@@ -91,10 +87,6 @@ class GimnasioController extends Controller
     public function update(Request $request, $id)
     {
         //
-        request()->validate([
-            'nombre' => 'required',
-            'email' => 'required',
-            ]);
             User::find($id)->update($request->all());
             return redirect()->route('gimnasios.index')->with('success','Gimnasio updated successfully');
     }

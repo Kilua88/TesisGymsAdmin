@@ -14,7 +14,14 @@
 </div>
 <br>
 
-{!! $asistencias->links() !!}
+<br>
+<div class="float-right">
+<br>
+        <a class="btn-lg btn-danger icon-file-pdf" href="{{ url('/reporta') }}" data-toggle="tooltip" data-placement="top" title="REPORTE DEL DIA" target="_blank"></a>
+<br><br>
+</div>
+<br>
+
 <br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">

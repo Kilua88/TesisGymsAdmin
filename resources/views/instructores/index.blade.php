@@ -16,7 +16,6 @@
 </div>
 <br>
 
-{!! $instructores->links() !!}
 <br>
 
 @if ($message = Session::get('success'))

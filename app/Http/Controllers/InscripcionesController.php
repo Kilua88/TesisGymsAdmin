@@ -24,7 +24,7 @@ class InscripcionesController extends Controller
      */
     public function index($id)
     {
-        $actividades = Actividade::where('users_id',Auth::user()->id)->paginate(5);
+        $actividades = Actividade::where('users_id',Auth::user()->id)->get();
         $clientes = Cliente::find($id);
         $persona = Persona::with('persona');
         $inscripciones = Inscripcione::where('cli_id',$clientes->id)->where('insc_alta', true)->get();

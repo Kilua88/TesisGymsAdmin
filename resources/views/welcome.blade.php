@@ -82,9 +82,31 @@
             <div class="content">
                              
         </div>
-    </body>
+<div>
 
-    <script>
-   
-</script>
+<a href="{{ url('/reportd') }}" target="_blank"> DIA     </a>
+
+
+
+<a href="{{ url('/reports') }}" target="_blank"> SEMANA </a>
+
+<a href="{{ url('/reportm') }}" target="_blank"> MES </a>
+
+<a href="{{ url('/reporta') }}" target="_blank"> ASISTENCIA </a>
+</div>
+    <div class="fluid-none">
+    <h1 align="center">Administra Facilmente tu Gimnasio</h1>
+                <a ><img src="{{ url( 'app/default/gimnasio.jpg') }}" alt="Imagenes"></a>
+    
+    </div>
+
+
+
+    
+
+
+
+
+
+    </body>
 </html>

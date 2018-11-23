@@ -14,8 +14,15 @@
     </div>
 </div>
 <br>
+<div class="float-right">
+<br>
+        <a class="btn-lg btn-danger icon-file-pdf" href="{{ url('/reportd') }}" data-toggle="tooltip" data-placement="top" title="REPORTE DEL DIA" target="_blank"></a>
 
-{!! $cuotadetalles->links() !!}
+        <a class="btn-lg btn-danger icon-file-pdf" href="{{ url('/reports') }}" data-toggle="tooltip" data-placement="top" title="REPORTE DE LA SEMANA" target="_blank"></a>
+
+        <a class="btn-lg btn-danger icon-file-pdf" href="{{ url('/reportm') }}" data-toggle="tooltip" data-placement="top" title="REPORTE DEL MES" target="_blank"></a>
+<br><br>
+</div>
 <br>
 
 @if ($message = Session::get('success'))

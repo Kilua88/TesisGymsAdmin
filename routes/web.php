@@ -23,21 +23,17 @@ Route::domain('{account}.myapp.com')->group(function () {
 });
 
 Auth::routes();
-Route::get('storage/{archivo}', function ($archivo) {
-    $files = Storage::allFiles(Auth::user()->id);
-     //verificamos si el archivo existe y lo retornamos
-     foreach( $files as $file){
-          if ($file == $archivo)
-          {
-              return Storage::response($archivo);
-             
-          }
-     //si no se encuentra lanzamos un error 404.
-        }
- 
-});
 Route::post('storage/create', 'StorageController@save');
+Route::post('guardar', 'AlmacenController@save');
 Route::get('/home', 'HomeController@index')->name('home');
+
+   
+
+Route::get('/reportd', 'ReportsController@dias' );
+Route::get('/reportm', 'ReportsController@meses' );
+Route::get('/reports', 'ReportsController@semanas' );
+Route::get('/reporta', 'ReportsController@asistencias' );
+
 
 Route::get('asistencias/guardar', 'AsistenciaController@asist')->name('asist');
 Route::get('formulario', 'StorageController@index');

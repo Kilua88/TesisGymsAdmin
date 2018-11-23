@@ -16,7 +16,7 @@
 </div>
 <br>
 
-{!! $actividades->links() !!}
+
 <br>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">

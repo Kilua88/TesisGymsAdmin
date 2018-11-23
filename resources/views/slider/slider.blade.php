@@ -10,8 +10,8 @@
     <div class='carousel-inner'  heigth=800px width=800px>
         @foreach($slides as $item)
             @if($item->estado)
-                <div class="carousel-item {{ $loop->first ? ' active' : '' }}"  >
-                    <center><img class="d-block w-100" src="{{ url($item->url) }}" alt="{{ $item->titulos }}" height="600" width="600"></center>
+                <div class="carousel-item {{ $loop->first ? ' active' : '' }}"  style="border-color: white;" >
+                    <center><img class="d-block w-100" src="{{ url($item->url) }}" alt="{{ $item->titulos }}"  style="margin: auto;" height=480 width=1024></center>
                     <div class="carousel-caption">
                         <h5 style="color:#2e86c1"; text-shadow: "5px 5px 5px black;">{{ $item->titulos }}</h5>
                         <p style="color:white"; text-shadow: "5px 5px 5px black;">{{ $item->descripcion}}</p>

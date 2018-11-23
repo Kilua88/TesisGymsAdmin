@@ -18,7 +18,7 @@ class InstructorController extends Controller
     public function index()
     {
        
-        $instructores = Instructore::where('users_id',Auth::user()->id)->paginate(5);
+        $instructores = Instructore::where('users_id',Auth::user()->id)->get();
         $persona = Persona::with('persona');
         return view('instructores.index',compact('persona'))->with('instructores',$instructores);
       }
@@ -42,16 +42,6 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'pers_nombre' => 'required|max:20',
-            'pers_apellido' => 'required|max:20',
-            'pers_direccion' => 'required|max:20',
-            'pers_telefono' => 'required|numeric|min:100000',
-            'pers_email' => 'required|email',
-            'act_nombre' => 'required|max:20',
-            'pers_dni' => 'required|numeric|min:100000',
-        ]);
-
 
 
         $persona = new Persona;

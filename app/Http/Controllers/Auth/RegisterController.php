@@ -10,6 +10,7 @@ use App\Persona;
 use App\Instructore;
 use App\Actividade;
 use App\Image_Sliders;
+use App\Moneda;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -120,11 +121,13 @@ class RegisterController extends Controller
             $cliente->save();
 
 
+            $moneda= Moneda::find(1);
+            
 
             $actividad = new Actividade; 
             $actividad->users_id =$user->id;;
             $actividad->act_nombre = 'Full';
-            $actividad->act_moneda = 'Pesos $';
+            $actividad->monedas_id =$moneda->id;
             $actividad->act_cuota = '690';
             $actividad->save();
 

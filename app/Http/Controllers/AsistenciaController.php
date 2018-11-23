@@ -22,8 +22,14 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        $asistencias = Asistencia::where('users_id',Auth::user()->id)->orderBy('asis_fecha','DESC')->paginate(10);
-        $clientes = Cliente::where('users_id',Auth::user()->id)->get();
+        if(Auth::user()->rol == '1'){
+
+            $asistencias = Asistencia::all();
+            $clientes = Cliente::all();
+        }else{
+                $asistencias = Asistencia::where('users_id',Auth::user()->id)->orderBy('asis_fecha','DESC')->get();
+                $clientes = Cliente::where('users_id',Auth::user()->id)->get();
+        }
         $persona = Persona::with('persona');
 
 

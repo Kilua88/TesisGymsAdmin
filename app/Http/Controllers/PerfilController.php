@@ -80,14 +80,6 @@ class PerfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-            'users->name' => 'required|max:20',
-            'gym_nombre' => 'required|max:20',
-            'gym_direccion' => 'required|max:50',
-            'gym_telefono' => 'required|numeric|min:100000',
-            'gym_url' => 'required|email',
-            
-        ]);
 
         $gimnasio = Gimnasio::find($id);
         $gimnasio->users->name = $request->input('users->name');
